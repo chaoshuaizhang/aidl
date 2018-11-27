@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
 export default class My extends Component {
+
     render() {
         return (
             <Text>

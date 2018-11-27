@@ -8,8 +8,13 @@ import {
     Button, Platform, TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types'
-import NavigationTab from "./TabPage";
-
+import TabPage from "./TabPage";
+import {
+    createAppContainer,
+    createStackNavigator,
+    StackActions,
+    NavigationActions,
+} from 'react-navigation';
 var PDAURL = 'http://172.16.100.158:8080/pdaware/user/rnLogin';
 /*
  * 账号密码输入框
@@ -94,7 +99,11 @@ class RedioButton extends Component {
     }
 }
 
-export default class LoginBackgroundImg extends Component {
+export class Login extends Component {
+    static navigationOptions = ({navigation, screenProps}) => ({
+        header: null
+    });
+
     constructor(props) {
         super(props)
         this.state = {
@@ -158,7 +167,7 @@ export default class LoginBackgroundImg extends Component {
                 if (this.state.userInfo.code == 'SUCCESS') {
                     //登录成功
                     //alert(JSON.stringify(this.state.userInfo.data))
-                    return (<NavigationTab/>);
+                    this.props.navigation.navigate('TabPage')
                 } else {
                     alert(JSON.stringify(this.state.userInfo.codeInfo))
                 }
@@ -229,3 +238,4 @@ const BgStyle = StyleSheet.create({
         alignItems: 'center'
     }
 })
+module.exports = Login;
