@@ -6,7 +6,7 @@ import React, {Component} from "react";
 import {StyleSheet, Image} from "react-native";
 import TabNavigator from "react-native-tab-navigator";
 import My from "./My";
-import MyMenu from "./MyMenu";
+import ItemMenu from "./ItemMenu";
 
 const TAB_TITLE_MY = '我的';
 const TAB_TAG_MY = 'my';
@@ -64,7 +64,7 @@ export class TabPage extends Component {
             case TAB_TAG_MY:
                 return (<My/>);
             case TAB_TAG_SET:
-                return (<MyMenu/>);
+                return (<ItemMenu/>);
         }
 
     };
@@ -85,8 +85,9 @@ const TabStyle = StyleSheet.create({
         fontSize: 8,
     },
     tab_title_selected: {
-        color: "#333333",
+        color: "#FF0000",
         fontSize: 8,
     }
 })
+//此处可改成别的，后期再说吧
 module.exports = TabPage;

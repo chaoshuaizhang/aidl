@@ -1,15 +1,9 @@
 /**
- * Created by changePosition on 2018/11/25.
+ * Created by changePosition on 2018/11/27.
  */
-import React, {Component} from 'react';
-import {View, Image, Text, StyleSheet, FlatList, Dimensions, TouchableOpacity, Button} from 'react-native';
-import {
-    createAppContainer,
-    createStackNavigator,
-    StackActions,
-    NavigationActions,
-} from 'react-navigation';
-import {TabNavigator, StackNavigator} from 'react-navigation';
+import React from 'react';
+import {Button, View, Text, FlatList, Image, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import {createStackNavigator, createAppContainer} from 'react-navigation'; // Version can be specified in package.json
 import DetailsScreen from '../pages/DetailsScreen'
 const screenW = Dimensions.get('window').width;
 // 一些常量设置
@@ -17,13 +11,9 @@ const cols = 3; // 列数
 const left = 10; // 左右边距
 const top = 10; // 上下边距
 const ImageWH = (screenW - (cols + 1) * left) / cols; // 图片大小
-
-class Menu extends Component {
-    static navigationOptions = {
-        title: 'MMMENU',
-    };
+class Menu extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             dataArr: [
                 {
@@ -70,12 +60,14 @@ class Menu extends Component {
         }
     }
 
+    static navigationOptions = {
+        title: 'Menu',
+        header: null
+    };
+
     render() {
         return (
-            <View>
-                <Button title={'点击'} onPress={() => {
-
-                }}/>
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <FlatList
                     data={this.state.dataArr}
                     renderItem={this.rengerMenuIcon.bind(this)}
@@ -84,7 +76,7 @@ class Menu extends Component {
                     style={MenuStyle.list}
                 />
             </View>
-        )
+        );
     }
 
     rengerMenuIcon(arrItem) {
@@ -93,7 +85,6 @@ class Menu extends Component {
                 <TouchableOpacity
                     onPress={() => {
                         this.menuItemClick(arrItem.item)
-                        // alert(JSON.stringify(this.props.menuItemClick))
                     }}>
                     <Image source={{uri: arrItem.item.img}} style={MenuStyle.menuIcon}/>
                     <Text>{arrItem.item.desc}</Text>
@@ -103,18 +94,27 @@ class Menu extends Component {
     }
 
     menuItemClick(item) {
-        if (item.desc == 'AAA5') {
-            this.props.navigation.navigate('Details', {
-                itemId: 86,
-                otherParam: 'anything you want here',
-            });
-        } else {
-            alert('未选中')
+        switch (item.desc) {
+            case 'AAA1':
+                alert('AAA1')
+                break;
+            case 'AAA2':
+                alert('AAA2')
+                break;
+            case 'AAA3':
+                alert('AAA3')
+                break;
+            case 'AAA4':
+                alert('AAA4')
+                break;
         }
+        this.props.navigation.navigate('Details', {
+            itemId: 86,
+            otherParam: 'anything you want here',
+        });
     }
 
 }
-
 const RootStack = createStackNavigator(
     {
         Menu: Menu,
@@ -122,7 +122,6 @@ const RootStack = createStackNavigator(
     },
     {
         initialRouteName: 'Menu',
-        /* The header config from HomeScreen is now here */
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#f4511e',
@@ -134,14 +133,6 @@ const RootStack = createStackNavigator(
         },
     }
 );
-
-const AppContainer = createAppContainer(RootStack);
-
-export default class MenuApp extends React.Component {
-    render() {
-        return <AppContainer/>;
-    }
-}
 var MenuStyle = StyleSheet.create({
     container: {
         flex: 1,
@@ -174,4 +165,10 @@ var MenuStyle = StyleSheet.create({
         paddingTop: 10,
     }
 });
-module.exports = Menu;
+const AppContainer = createAppContainer(RootStack);
+
+export default class ItemMenu extends React.Component {
+    render() {
+        return <AppContainer/>;
+    }
+}

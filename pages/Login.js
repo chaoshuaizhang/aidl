@@ -166,7 +166,7 @@ export class Login extends Component {
                 });
                 if (this.state.userInfo.code == 'SUCCESS') {
                     //登录成功
-                    //alert(JSON.stringify(this.state.userInfo.data))
+                    // alert(JSON.stringify(this.state.userInfo.data))
                     this.props.navigation.navigate('TabPage')
                 } else {
                     alert(JSON.stringify(this.state.userInfo.codeInfo))
