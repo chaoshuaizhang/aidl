@@ -6,7 +6,8 @@ import React, {Component} from "react";
 import {StyleSheet, Image} from "react-native";
 import TabNavigator from "react-native-tab-navigator";
 import My from "./My";
-import ItemMenu from "./ItemMenu";
+import MenuRouter from "./MenuRouter";
+import ItemMenu2 from "./itemPage/ItemMenu2";
 
 const TAB_TITLE_MY = '我的';
 const TAB_TAG_MY = 'my';
@@ -20,8 +21,9 @@ const TAB_ICON_SET_SELECTED = require('../imgs/slices/tab/set_ed.png');
 
 export class TabPage extends Component {
     static navigationOptions = ({navigation, screenProps}) => ({
-        header:null
+        header: null
     });
+
     constructor(props) {
         super(props)
 
@@ -33,28 +35,27 @@ export class TabPage extends Component {
 
     render() {
         return (
-
-            <TabNavigator tabBarStyle={TabStyle.tab_container}>
+            <TabNavigator tabBarStyle={TabStyle.tab_container} style={{flex:1}}>
                 {this.renderTabItem(TAB_TAG_MY, TAB_TITLE_MY, TAB_ICON_MY_NORMAL, TAB_ICON_MY_SELECTED)}
                 {this.renderTabItem(TAB_TAG_SET, TAB_TITLE_SET, TAB_ICON_SET_NORMAL, TAB_ICON_SET_SELECTED)}
             </TabNavigator>
-
         )
     }
 
     renderTabItem(tabTag, tabTitle, iconNormal, iconSelected) {
         return (
-            <TabNavigator.Item
-                selected={this.state.selectedTab === tabTag}
-                title={tabTitle}
-                titleStyle={TabStyle.tab_title}
-                selectedTitleStyle={TabStyle.tab_title_selected}
-                renderIcon={() => <Image source={iconNormal} style={TabStyle.tab_icon}/>}
-                renderSelectedIcon={() => <Image source={iconSelected}
-                                                 style={TabStyle.tab_icon}/>}
-                onPress={() => this.setState({selectedTab: tabTag})}>
-                {this.getItemPage(tabTag)}
-            </TabNavigator.Item>
+                <TabNavigator.Item
+                    marginBottom={100}
+                    selected={this.state.selectedTab === tabTag}
+                    title={tabTitle}
+                    titleStyle={TabStyle.tab_title}
+                    selectedTitleStyle={TabStyle.tab_title_selected}
+                    renderIcon={() => <Image source={iconNormal} style={TabStyle.tab_icon}/>}
+                    renderSelectedIcon={() => <Image source={iconSelected}
+                                                     style={TabStyle.tab_icon}/>}
+                    onPress={() => this.setState({selectedTab: tabTag})}>
+                    {this.getItemPage(tabTag)}
+                </TabNavigator.Item>
         );
     };
 
@@ -64,7 +65,8 @@ export class TabPage extends Component {
             case TAB_TAG_MY:
                 return (<My/>);
             case TAB_TAG_SET:
-                return (<ItemMenu/>);
+                //为了能在ItemMenu2中跳转
+                return (<ItemMenu2 {...this.props}/>);
         }
 
     };

@@ -9,8 +9,8 @@ import {
     TextInput, KeyboardAvoidingView, ScrollView, CheckBox,
     Button, Platform, TouchableOpacity
 } from 'react-native';
-import UpdateBtnBgStatus from './UpdateBtnBgStatus'
-import SingleRadioBtn from './SingleRadioBtn'
+import UpdateBtnBgStatus from '../UpdateBtnBgStatus'
+import SingleRadioBtn from '../SingleRadioBtn'
 //
 // //点击按钮时，改变按钮的背景色
 // class UpdateButtonStatus extends Component {

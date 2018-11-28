@@ -15,6 +15,7 @@ import {
     StackActions,
     NavigationActions,
 } from 'react-navigation';
+import Cans from '../Constants'
 var PDAURL = 'http://172.16.100.158:8080/pdaware/user/rnLogin';
 /*
  * 账号密码输入框
@@ -167,6 +168,7 @@ export class Login extends Component {
                 if (this.state.userInfo.code == 'SUCCESS') {
                     //登录成功
                     // alert(JSON.stringify(this.state.userInfo.data))
+                    Cans.userInfo = this.state.userInfo.data
                     this.props.navigation.navigate('TabPage')
                 } else {
                     alert(JSON.stringify(this.state.userInfo.codeInfo))

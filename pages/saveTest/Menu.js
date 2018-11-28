@@ -10,7 +10,7 @@ import {
     NavigationActions,
 } from 'react-navigation';
 import {TabNavigator, StackNavigator} from 'react-navigation';
-import DetailsScreen from '../pages/DetailsScreen'
+import DetailsScreen from '../DetailsScreen'
 const screenW = Dimensions.get('window').width;
 // 一些常量设置
 const cols = 3; // 列数

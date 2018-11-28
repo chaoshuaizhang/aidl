@@ -4,7 +4,7 @@
 import React from 'react';
 import {Button, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation'; // Version can be specified in package.json
-import DetailsScreen from '../pages/DetailsScreen'
+import DetailsScreen from '../DetailsScreen'
 
 
 // class DetailsScreen extends React.Component {

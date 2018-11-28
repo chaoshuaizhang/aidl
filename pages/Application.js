@@ -7,6 +7,7 @@ import React from 'react';
 
 const Login = require('./Login')
 const TabPage = require('./TabPage');
+const Sale = require('./itemPage/Sale');
 
 const Application = createStackNavigator({
 
@@ -15,6 +16,9 @@ const Application = createStackNavigator({
     },
     TabPage: {
         screen: TabPage,
+    },
+    Sale: {
+        screen: Sale
     }
 }, {initialRouteName: 'Login'});
 
