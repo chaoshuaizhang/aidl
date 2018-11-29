@@ -18,8 +18,7 @@ export default class Sale extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // language: [[desc = '选择全部', tag = 1], ['Chinese', 2], ['Franch', 3], ['English', 4], ['Candana', 5], ['哈哈哈', 6]],
-            language: [[desc = '选择全部', tag = 1], [desc = '选择全部', tag = 1], [desc = '选择全部', tag = 1], [desc = '选择全部', tag = 1], [desc = '选择全部', tag = 1], [desc = '选择全部', tag = 1]],
+            language: ['HHHhh', 'qqqqqqqq', 'wwwwwwwwwww', 'ddddddd', 'aaaaaaa', 'cccccccc'],
             selectedLangunage: null
         }
     }
@@ -33,9 +32,9 @@ export default class Sale extends React.Component {
             <View>
                 <Picker
                     selectedValue={this.state.selectedLangunage}
-                    style={{height: 50, flex: 1}}
+                    style={{height: 50, width: 200, alignContent: 'center'}}
                     onValueChange={(itemValue, itemIndex) => this.onPickerSelected(itemIndex, itemValue)}>
-                    {this.state.language.map((name) => <Picker.Item label={name.tag} value={name.desc}/>)}
+                    {this.state.language.map((name) => <Picker.Item label={name} value={name}/>)}
                 </Picker>
             </View>
         );
