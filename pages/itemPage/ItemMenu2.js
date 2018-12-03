@@ -4,13 +4,11 @@
 
 import React from 'react';
 import {View, Text, FlatList, Image, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import DimensUtil from '../../utils/DimensUtil'
 
 const screenW = Dimensions.get('window').width;
 // 一些常量设置
-const cols = 3; // 列数
-const left = 15; // 左右边距
-const top = 10; // 上下边距
-const ImageWH = (screenW - (cols + 1) * left) / cols; // 图片大小
+const ImageWH = DimensUtil.getItemWidth(3, 15)
 const _SALE = 'Sale'
 const _REFUND = 'Refund'
 const _TOPGOODS = 'TopGoods'
@@ -95,6 +93,7 @@ export default class ItemMenu2 extends React.Component {
     }
 
     menuItemClick(item) {
+        alert(JSON.stringify(item))
         let desc = item.desc;
         this.props.navigation.navigate(desc, {
             itemId: 86,
@@ -123,7 +122,7 @@ var MenuStyle = StyleSheet.create({
     menuIcon: {
         width: ImageWH,
         height: ImageWH,
-        marginBottom:5,
+        marginBottom: 5,
         borderRadius: 17
     },
     title: {

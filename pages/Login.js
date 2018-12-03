@@ -5,8 +5,9 @@ import React, {Component} from 'react';
 import {
     View, Text, Image, ImageBackground, StyleSheet,
     TextInput, KeyboardAvoidingView, ScrollView, CheckBox,
-    Button, Platform, TouchableOpacity
+    Button, Platform, TouchableOpacity, ProgressBarAndroid
 } from 'react-native';
+import HttpUtil from '../utils/HttpUtil'
 import PropTypes from 'prop-types'
 import TabPage from "./TabPage";
 import {
@@ -153,28 +154,85 @@ export class Login extends Component {
         //     alert("用户密码不能为空！")
         // }
         let formData = new FormData();
-        formData.append("userName", "S083779");
-        formData.append("password", "3779super");
+        formData.append("userName", "S083262");
+        formData.append("password", "3262super");
         formData.append("macAddress", "11-11-11-11-11-11");
-        fetch(PDAURL, {
-            method: 'POST',
-            headers: {},
-            body: formData
-        }).then((response) => response.json())
-            .then((responseData) => {
-                this.setState({
-                    userInfo: responseData
-                });
-                if (this.state.userInfo.code == 'SUCCESS') {
-                    //登录成功
-                    // alert(JSON.stringify(this.state.userInfo.data))
-                    Cans.userInfo = this.state.userInfo.data
-                    this.props.navigation.navigate('TabPage')
-                } else {
-                    alert(JSON.stringify(this.state.userInfo.codeInfo))
-                }
 
+        let userInfo = {
+            "userName": "S083262",
+            "password": "3262super",
+            "macAddress": "11-11-11-11-11-11"
+        }
+        //失败
+        // HttpUtil.fetchGet('user/rnLogin', formData).then((responseData) => {
+        //     responseData.json().then((responseData) => {
+        //         this.setState({
+        //             userInfo: responseData
+        //         });
+        //         if (this.state.userInfo.code == 'SUCCESS') {
+        //             //登录成功
+        //             // alert(JSON.stringify(this.state.userInfo.data))
+        //             Cans.userInfo = this.state.userInfo.data
+        //             this.props.navigation.navigate('TabPage')
+        //         } else {
+        //             alert(JSON.stringify(this.state.userInfo.codeInfo))
+        //         }
+        //     }).catch((err) => {
+        //         alert(err)
+        //     })
+        // })
+
+        //成功
+        const promise = new Promise(function (resolve, reject) {
+            fetch(PDAURL, {
+                method: 'POST',
+                headers: {},
+                body: formData
+            }).then((response) => {
+                if (response.ok) {
+                    resolve(response);
+                } else {
+                }
+            }).catch((err) => {
+                reject('网络异常，请检查网络后再试。');
             })
+        });
+        promise.then((response) => response.json()).then((responseData) => {
+            this.setState({
+                userInfo: responseData
+            });
+            if (this.state.userInfo.code == 'SUCCESS') {
+                //登录成功
+                Cans.userInfo = this.state.userInfo.data
+                this.props.navigation.navigate('TabPage')
+            } else {
+                alert("FAIL：" + JSON.stringify(this.state.userInfo))
+            }
+        }).catch((err) => {
+            alert("异常：" + err);
+        })
+
+        // fetch(PDAURL, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: formData
+        // }).then((response) => response.json())
+        //     .then((responseData) => {
+        //         this.setState({
+        //             userInfo: responseData
+        //         });
+        //         if (this.state.userInfo.code == 'SUCCESS') {
+        //             //登录成功
+        //             // alert(JSON.stringify(this.state.userInfo.data))
+        //             Cans.userInfo = this.state.userInfo.data
+        //             this.props.navigation.navigate('TabPage')
+        //         } else {
+        //             alert(JSON.stringify(this.state.userInfo.codeInfo))
+        //         }
+        //     })
     }
 
     receiveName(name) {
@@ -189,6 +247,14 @@ export class Login extends Component {
     savePwd(isSavePwd) {
         this.state.isSavePwd = isSavePwd
         alert(this.state.isSavePwd ? '保存密码' : '不保存密码')
+    }
+
+    renderLoading() {
+        return (
+            <View style={my_styles.container}>
+                <ProgressBarAndroid />
+            </View>
+        );
     }
 
 }

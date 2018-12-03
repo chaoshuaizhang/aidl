@@ -8,6 +8,7 @@ import React from 'react';
 const Login = require('./Login')
 const TabPage = require('./TabPage');
 const Sale = require('./itemPage/Sale');
+const Refund = require('./itemPage/Refund');
 
 const Application = createStackNavigator({
 
@@ -19,6 +20,9 @@ const Application = createStackNavigator({
     },
     Sale: {
         screen: Sale
+    },
+    Refund: {
+        screen: Refund
     }
 }, {initialRouteName: 'Login'});
 

@@ -7,15 +7,21 @@ export default {
     fetchGet,
     fetchPost,
     fetchPut,
-    ROOT_URL
+    ROOT_URL,
 };
 
 const httpParameters = (method) => ({
     method: method,
     headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        // 'Accept': 'application/json',
+        // 'Content-Type': 'application/json',
     },
+});
+
+const httpParametersGet = (method, formData) => ({
+    method: method,
+    headers: {},
+    body: formData
 });
 
 const httpParametersBody = (method, body = {}) => ({
@@ -27,22 +33,22 @@ const httpParametersBody = (method, body = {}) => ({
     body: JSON.stringify(body),
 });
 
-function fetchGet(url) {
-    return fetchUrl(url, 'GET', null);
+function fetchGet(url, formData) {
+    return fetchUrlFormData(url, 'GET', formData);
 }
 
 function fetchPost(url, body) {
-    return fetchUrl(url, 'POST', body);
+    return fetchUrlPost(url, 'POST', body);
 }
 
 function fetchPut(url, body) {
-    return fetchUrl(url, 'PUT', body);
+    return fetchUrlPost(url, 'PUT', body);
 }
 
-function fetchUrl(url, method, body) {
+function fetchUrlPost(url, method, body) {
     return new Promise(function (resolve, reject) {
         let requestUrl = ROOT_URL + '/' + url;
-        fetch(requestUrl, (body === null) ? httpParameters(method) : httpParametersBody(method, body))
+        fetch(requestUrl, httpParametersBody(method, body))
             .then((response) => {
                 console.info(method + ' Url：' + requestUrl);
                 console.info(method + ' Body：' + JSON.stringify(body));
@@ -55,5 +61,42 @@ function fetchUrl(url, method, body) {
                 reject({status: -1, message: '网络异常，请检查网络后再试。'});
             })
     })
+}
+function fetchUrlFormData(url, method, formData) {
+
+    return new Promise(function (resolve, reject) {
+        fetch(ROOT_URL + "/" + url, {
+            method: method,
+            headers: {},
+            body: formData
+        }).then((response) => {
+            if (response.ok) {
+                resolve(JSON.stringify(response));
+            } else {
+                reject("嘿嘿嘿");
+            }
+        }).catch((err) => {
+            reject('网络异常，请检查网络后再试。');
+        })
+    });
+
+    // return new Promise(function (resolve, reject) {
+    //     let requestUrl = ROOT_URL + '/' + url;
+    //     fetch(requestUrl, httpParametersGet(method, formData))
+    //         .then((response) => {
+    //             if (response.ok) {
+    //                 console.info(method + ' Url：' + requestUrl);
+    //                 console.info(method + ' Params：' + JSON.stringify(formData));
+    //                 console.info('Response status:' + response.status);
+    //                 resolve(response);
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             console.info(method + ' Url：' + requestUrl);
+    //             console.info(err);
+    //             reject({status: -1, message: err + '：网络异常，请检查网络后再试。'});
+    //         })
+    // })
+
 }
 
