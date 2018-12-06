@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {
     View, Text, Image, ImageBackground, StyleSheet,
     TextInput, KeyboardAvoidingView, ScrollView, CheckBox,
-    Button, Platform, TouchableOpacity, ProgressBarAndroid
+    Button, Platform, TouchableOpacity, ProgressBarAndroid, ToastAndroid
 } from 'react-native';
 import HttpUtil from '../utils/HttpUtil'
 import PropTypes from 'prop-types'
@@ -79,24 +79,22 @@ class RedioButton extends Component {
     constructor(props) {
         super(props)
         this.state = ({
-            isSaved: true,
+            isSaved: false,
             img_arr: [require('../imgs/slices/login/pwd_save.png'), require('../imgs/slices/login/pwd_unsave.png')]
         })
     }
 
     click() {
-        this.state.isSaved = !this.state.isSaved
-        alert(this.state.isSaved)
-        // this.props.click(this.state.isSaved)
+        this.props.click()
     }
 
     render() {
         return (
-            <TouchableOpacity onPress={() => {
+            <TouchableOpacity onPress={
                 this.click.bind(this)
-            }}>
+            }>
                 <Image style={{width: 12, height: 12}}
-                       source={this.state.isSaved ? this.state.img_arr[0] : this.state.img_arr[1]}/>
+                       source={!this.props.defStatus ? this.state.img_arr[0] : this.state.img_arr[1]}/>
             </TouchableOpacity>
         )
     }
@@ -112,7 +110,7 @@ export class Login extends Component {
         this.state = {
             userName: null,
             userPwd: null,
-            isSavePwd: true,
+            isSavePwd: false,
             userInfo: null,
             isLogining: false
         }
@@ -141,7 +139,7 @@ export class Login extends Component {
                 {/*子组件需要用到父组件的props，所以需要传过去？*/}
                 <LoginBtn click={() => this.loginClick()}/>
                 <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 15}}>
-                    <RedioButton click={this.savePwd.bind(this)}/>
+                    <RedioButton defStatus={this.state.isSavePwd} click={() => this.savePwd()}/>
                     <Text style={{marginLeft: 10, color: '#FFF'}}>记住密码</Text>
                 </View>
                 {this.renderLoading()}
@@ -256,8 +254,10 @@ export class Login extends Component {
         this.state.userPwd = pwd
     }
 
-    savePwd(isSavePwd) {
-        this.state.isSavePwd = isSavePwd
+    savePwd() {
+        this.setState({
+            isSavePwd: !this.state.isSavePwd
+        })
         alert(this.state.isSavePwd ? '保存密码' : '不保存密码')
     }
 

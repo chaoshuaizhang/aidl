@@ -70,18 +70,19 @@ export default class LoginBackgroundImg extends Component {
         return (
             <View>
                 <UpdateBtnBgStatus pressStatus='normal'/>
-                <SingleRadioBtn pressStatus='normal' setSaved={() => {
-                    this.myClick()
+                <SingleRadioBtn pressStatus='normal' setSaved={(rbStatus) => {
+                    this.myClick(rbStatus)
                 }}/>
             </View>
         )
     }
 
-    setSaved(status) {
-        alert(status)
+    setSaved() {
+        // alert(this.state.isSavePwd)
+        alert("---")
     }
-    myClick(status) {
-        alert(status)
+    myClick(rbStatus) {
+        alert(rbStatus)
     }
 }
 

@@ -16,13 +16,15 @@ export default class SingleRadioBtn extends Component {
         super(props);
         this.state = {pressStatus: 'normal'};
     }
+
     _onPress() {
         if (this.state.pressStatus == 'pressin') {
             this.setState({pressStatus: 'normal'});
         } else
             this.setState({pressStatus: 'pressin'});
-        this.props.setSaved(this.state.pressStatus);
+        this.props.setSaved(this.state.pressStatus)
     }
+
     render() {
         return (
             <TouchableOpacity
