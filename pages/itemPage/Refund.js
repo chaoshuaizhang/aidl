@@ -9,7 +9,7 @@ import moment from 'moment';
 import Echarts from 'native-echarts';
 import DimensUtil from '../../utils/DimensUtil'
 import Cans from '../../Constants'
-var SALE_DAILY_URL = 'http://172.16.100.158:8080/pdaware/sale/querySalesByDailyNew';
+var SALE_DAILY_URL = Cans.SERVER_URL + 'sale/querySalesByDailyNew';
 export default class Refund extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
@@ -42,63 +42,63 @@ export default class Refund extends React.Component {
         const otherParam = navigation.getParam('otherParam', 'some default value');
 
         option = {
-            tooltip : {
+            tooltip: {
                 trigger: 'axis'
             },
             legend: {
-                data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
             },
             toolbox: {
-                show : true,
-                feature : {
-                    mark : {show: true},
-                    dataView : {show: true, readOnly: false},
-                    magicType : {show: true, type: ['tiled']},
+                show: true,
+                feature: {
+                    mark: {show: true},
+                    dataView: {show: true, readOnly: false},
+                    magicType: {show: true, type: ['tiled']},
                 }
             },
-            calculable : true,
-            xAxis : [
+            calculable: true,
+            xAxis: [
                 {
-                    type : 'category',
-                    boundaryGap : false,
-                    data : ['周一','周二','周三','周四','周五','周六','周日']
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
                 }
             ],
-            yAxis : [
+            yAxis: [
                 {
-                    type : 'value'
+                    type: 'value'
                 }
             ],
-            series : [
+            series: [
                 {
-                    name:'邮件营销',
-                    type:'line',
+                    name: '邮件营销',
+                    type: 'line',
                     stack: '总量',
-                    data:[120, 300, 20, 1000, 90, 230, 210]
+                    data: [120, 300, 20, 1000, 90, 230, 210]
                 },
                 {
-                    name:'联盟广告',
-                    type:'line',
+                    name: '联盟广告',
+                    type: 'line',
                     stack: '总量',
-                    data:[220, 182, 3000, 234, 290, 330, 310]
+                    data: [220, 182, 3000, 234, 290, 330, 310]
                 },
                 {
-                    name:'视频广告',
-                    type:'line',
+                    name: '视频广告',
+                    type: 'line',
                     stack: '总量',
-                    data:[150, 232, 20, 154, 600, 330, 410]
+                    data: [150, 232, 20, 154, 600, 330, 410]
                 },
                 {
-                    name:'直接访问',
-                    type:'line',
+                    name: '直接访问',
+                    type: 'line',
                     stack: '总量',
-                    data:[1000, 332, 301, 334, 390, 330, 320]
+                    data: [1000, 332, 301, 334, 390, 330, 320]
                 },
                 {
-                    name:'搜索引擎',
-                    type:'line',
+                    name: '搜索引擎',
+                    type: 'line',
                     stack: '总量',
-                    data:[820, 932, 20, 934, 1290, 300, 1320]
+                    data: [820, 932, 20, 934, 1290, 300, 1320]
                 }
             ]
         };

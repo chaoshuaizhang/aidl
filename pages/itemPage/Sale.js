@@ -9,7 +9,7 @@ import moment from 'moment';
 import Echarts from 'native-echarts';
 import DimensUtil from '../../utils/DimensUtil'
 import Cans from '../../Constants'
-var SALE_DAILY_URL = 'http://172.16.100.158:8080/pdaware/sale/querySalesByDailyNew';
+var SALE_DAILY_URL = 'http://192.168.191.1:8080/pdaware/sale/querySalesByDailyNew';
 export default class Sale extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {

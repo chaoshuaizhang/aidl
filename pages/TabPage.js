@@ -65,7 +65,7 @@ export class TabPage extends Component {
             case TAB_TAG_MY:
                 return (<My/>);
             case TAB_TAG_SET:
-                //为了能在ItemMenu2中跳转
+                //为了能在ItemMenu2中跳转(使用this.props.navigation)
                 return (<ItemMenu2 {...this.props}/>);
         }
 

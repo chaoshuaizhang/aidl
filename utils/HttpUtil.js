@@ -1,13 +1,12 @@
 /**
  * Created by changePosition on 2018/11/29.
  */
-export const ROOT_URL = 'http://172.16.100.158:8080/pdaware';
+import Cans from '../Constants'
 
 export default {
     fetchGet,
     fetchPost,
-    fetchPut,
-    ROOT_URL,
+    fetchPut
 };
 
 const httpParameters = (method) => ({
@@ -47,7 +46,7 @@ function fetchPut(url, body) {
 
 function fetchUrlPost(url, method, body) {
     return new Promise(function (resolve, reject) {
-        let requestUrl = ROOT_URL + '/' + url;
+        let requestUrl = Cans.SERVER_URL + '/' + url;
         fetch(requestUrl, httpParametersBody(method, body))
             .then((response) => {
                 console.info(method + ' Url：' + requestUrl);
@@ -65,7 +64,7 @@ function fetchUrlPost(url, method, body) {
 function fetchUrlFormData(url, method, formData) {
 
     return new Promise(function (resolve, reject) {
-        fetch(ROOT_URL + "/" + url, {
+        fetch(Cans.SERVER_URL + "/" + url, {
             method: method,
             headers: {},
             body: formData

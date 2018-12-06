@@ -17,7 +17,7 @@ import {
     NavigationActions,
 } from 'react-navigation';
 import Cans from '../Constants'
-var PDAURL = 'http://172.16.100.158:8080/pdaware/user/rnLogin';
+var PDAURL = Cans.SERVER_URL + 'user/rnLogin';
 /*
  * 账号密码输入框
  * */
@@ -56,15 +56,16 @@ class NamePwdView extends Component {
 }
 
 class LoginBtn extends Component {
-    click() {
-        //调用父组件的click
-        this.props.click()
-    }
+    // click() {
+    //     //调用父组件的click
+    //     this.props.click()
+    // }
 
     render() {
         return (
             <View style={{alignItems: 'center', marginTop: 20}}>
-                <TouchableOpacity style={[BgStyle.login_btn]} onPress={() => this.click()}>
+                {/*关于props，在父组件使用时定义了click，则此处点击事件指明用父组件的那个click*/}
+                <TouchableOpacity style={[BgStyle.login_btn]} onPress={() => this.props.click()}>
                     <Text style={{color: '#4A95F1'}}>登录</Text>
                 </TouchableOpacity>
             </View>
@@ -112,7 +113,8 @@ export class Login extends Component {
             userName: null,
             userPwd: null,
             isSavePwd: true,
-            userInfo: null
+            userInfo: null,
+            isLogining: false
         }
     }
 
@@ -136,11 +138,13 @@ export class Login extends Component {
                 </View>
                 {/*注意理解下下边的绑定和receive_name：相当于是receive_name交给receiveName处理？*/}
                 <NamePwdView receive_name={this.receiveName.bind(this)} receive_pwd={this.receivePwd.bind(this)}/>
+                {/*子组件需要用到父组件的props，所以需要传过去？*/}
                 <LoginBtn click={() => this.loginClick()}/>
                 <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 15}}>
                     <RedioButton click={this.savePwd.bind(this)}/>
                     <Text style={{marginLeft: 10, color: '#FFF'}}>记住密码</Text>
                 </View>
+                {this.renderLoading()}
             </ImageBackground>
         )
     }
@@ -151,11 +155,15 @@ export class Login extends Component {
 
     loginClick() {
         // if (this.state.userName == null || this.state.userPwd == null) {
-        //     alert("用户密码不能为空！")
+        //     alert("用户密码不能为空！"+PDAURL)
         // }
+
+        this.setState({
+            isLogining: true
+        })
         let formData = new FormData();
-        formData.append("userName", "S083262");
-        formData.append("password", "3262super");
+        formData.append("userName", "S021070448");
+        formData.append("password", "0448super");
         formData.append("macAddress", "11-11-11-11-11-11");
 
         let userInfo = {
@@ -210,6 +218,10 @@ export class Login extends Component {
             }
         }).catch((err) => {
             alert("异常：" + err);
+        }).finally(() => {
+            this.setState({
+                isLogining: false
+            });
         })
 
         // fetch(PDAURL, {
@@ -250,11 +262,15 @@ export class Login extends Component {
     }
 
     renderLoading() {
-        return (
-            <View style={my_styles.container}>
-                <ProgressBarAndroid />
-            </View>
-        );
+        if (this.state.isLogining) {
+            return (
+                <View style={{justifyContent: 'center', flex: 1, alignSelf: 'center'}}>
+                    <ProgressBarAndroid />
+                </View>
+            );
+        } else {
+            return null
+        }
     }
 
 }
