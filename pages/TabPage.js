@@ -19,7 +19,7 @@ const TAB_ICON_SET_NORMAL = require('../imgs/slices/tab/set.png');
 const TAB_ICON_SET_SELECTED = require('../imgs/slices/tab/set_ed.png');
 
 
-export class TabPage extends Component {
+class TabPage extends Component {
     static navigationOptions = ({navigation, screenProps}) => ({
         header: null
     });
@@ -29,33 +29,33 @@ export class TabPage extends Component {
 
         this.state = {
             //默认选中的
-            selectedTab: TAB_TAG_MY
+            selectedTab: TAB_TAG_SET
         }
     }
 
     render() {
         return (
-            <TabNavigator tabBarStyle={TabStyle.tab_container} style={{flex:1}}>
-                {this.renderTabItem(TAB_TAG_MY, TAB_TITLE_MY, TAB_ICON_MY_NORMAL, TAB_ICON_MY_SELECTED)}
+            <TabNavigator tabBarStyle={TabStyle.tab_container} style={{flex: 1}}>
                 {this.renderTabItem(TAB_TAG_SET, TAB_TITLE_SET, TAB_ICON_SET_NORMAL, TAB_ICON_SET_SELECTED)}
+                {this.renderTabItem(TAB_TAG_MY, TAB_TITLE_MY, TAB_ICON_MY_NORMAL, TAB_ICON_MY_SELECTED)}
             </TabNavigator>
         )
     }
 
     renderTabItem(tabTag, tabTitle, iconNormal, iconSelected) {
         return (
-                <TabNavigator.Item
-                    marginBottom={100}
-                    selected={this.state.selectedTab === tabTag}
-                    title={tabTitle}
-                    titleStyle={TabStyle.tab_title}
-                    selectedTitleStyle={TabStyle.tab_title_selected}
-                    renderIcon={() => <Image source={iconNormal} style={TabStyle.tab_icon}/>}
-                    renderSelectedIcon={() => <Image source={iconSelected}
-                                                     style={TabStyle.tab_icon}/>}
-                    onPress={() => this.setState({selectedTab: tabTag})}>
-                    {this.getItemPage(tabTag)}
-                </TabNavigator.Item>
+            <TabNavigator.Item
+                marginBottom={100}
+                selected={this.state.selectedTab === tabTag}
+                title={tabTitle}
+                titleStyle={TabStyle.tab_title}
+                selectedTitleStyle={TabStyle.tab_title_selected}
+                renderIcon={() => <Image source={iconNormal} style={TabStyle.tab_icon}/>}
+                renderSelectedIcon={() => <Image source={iconSelected}
+                                                 style={TabStyle.tab_icon}/>}
+                onPress={() => this.setState({selectedTab: tabTag})}>
+                {this.getItemPage(tabTag)}
+            </TabNavigator.Item>
         );
     };
 
@@ -92,4 +92,5 @@ const TabStyle = StyleSheet.create({
     }
 })
 //此处可改成别的，后期再说吧
-module.exports = TabPage;
+// module.exports = TabPage;
+export default TabPage

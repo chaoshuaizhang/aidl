@@ -4,7 +4,7 @@
 
 
 import React, {Component} from "react";
-import {Modal, Text, TouchableHighlight, View} from "react-native";
+import {Modal, Text, TouchableHighlight, View, ProgressBarAndroid} from "react-native";
 
 export default class ModalExample extends Component {
     state = {
@@ -19,23 +19,16 @@ export default class ModalExample extends Component {
         return (
             <View style={{marginTop: 22}}>
                 <Modal
-                    animationType="slide"
-                    transparent={false}
+                    animationType="none"
+                    transparent={true}
                     visible={this.state.modalVisible}
                     onRequestClose={() => {
-                        alert("Modal has been closed.");
+                        /*按返回键时提示*/
+                        // alert("Modal has been closed.");
+                        this.setModalVisible(!this.state.modalVisible);
                     }}>
-                    <View style={{marginTop: 22}}>
-                        <View>
-                            <Text>Hello World!</Text>
-
-                            <TouchableHighlight
-                                onPress={() => {
-                                    this.setModalVisible(!this.state.modalVisible);
-                                }}>
-                                <Text>Hide Modal</Text>
-                            </TouchableHighlight>
-                        </View>
+                    <View style={{flex: 1, justifyContent: 'center', backgroundColor: '#AAA'}}>
+                        <ProgressBarAndroid/>
                     </View>
                 </Modal>
 

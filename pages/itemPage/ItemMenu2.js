@@ -93,7 +93,7 @@ export default class ItemMenu2 extends React.Component {
     }
 
     menuItemClick(item) {
-        alert(JSON.stringify(item))
+        // alert(JSON.stringify(item))
         let desc = item.desc;
         this.props.navigation.navigate(desc, {
             itemId: 86,

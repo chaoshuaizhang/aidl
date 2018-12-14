@@ -8,8 +8,10 @@ import DateUtil from '../../utils/DateUtil';
 import moment from 'moment';
 import Echarts from 'native-echarts';
 import DimensUtil from '../../utils/DimensUtil'
+import {SERVER_URL} from '../../Constants'
 import Cans from '../../Constants'
-var SALE_DAILY_URL = 'http://192.168.191.1:8080/pdaware/sale/querySalesByDailyNew';
+const SALE_DAILY_URL = SERVER_URL + 'sale/querySalesByDailyNew';
+let shouldRefresh = false
 export default class Sale extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
@@ -23,9 +25,6 @@ export default class Sale extends React.Component {
 
     constructor(props) {
         super(props)
-        for (let obj in Cans.userInfo.lstSupply.length) {
-
-        }
         this.state = {
             // supplies: ['100521', '100434', '101547'],
             posi: 0,
@@ -39,7 +38,9 @@ export default class Sale extends React.Component {
             saleData: null,
             saleHistory: null,
             saleTypes: ['netSaleMoney', 'padSaleMoney', 'saleMoneySum', 'saleSum', 'stockSum', 'weixinSaleMoney'],
-            saleDatas: [0, 0, 0, 0, 0, 0]
+            saleDatas: [0, 0, 0, 0, 0, 0],
+            /*注意善变设置了一个同名的let shouldRefresh*/
+            shouldRefresh: false
         }
     }
 
@@ -47,11 +48,6 @@ export default class Sale extends React.Component {
         const {navigation} = this.props;
         const itemId = navigation.getParam('itemId', 'NO-ID');
         const otherParam = navigation.getParam('otherParam', 'some default value');
-        var weatherIcons = {
-            'Sunny': './data/asset/img/weather/sunny_128.png',
-            'Cloudy': './data/asset/img/weather/cloudy_128.png',
-            'Showers': './data/asset/img/weather/showers_128.png'
-        };
 
         option = {
             title: {
@@ -118,7 +114,7 @@ export default class Sale extends React.Component {
                                                                        value={brand.brandSid}/>)}
                     </Picker>
                 </View>
-                <View style={{flexDirection: 'row'}}>
+                <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                     <DatePicker
                         defaultDate={new Date()}
                         locale={"zh"}
@@ -143,9 +139,17 @@ export default class Sale extends React.Component {
                         placeHolderTextStyle={{color: "#d3d3d3"}}
                         onDateChange={this.onEndDateSelected.bind(this)}
                     />
-                    <Button title={'查询'} onPress={this.getSaleHistory.bind(this)}/>
+                    <View style={{width: 100, height: 50, marginLeft: 25, marginRight: 2}}>
+                        <Button title={'查询'}
+                                onPress={this.getSaleHistory.bind(this)}/>
+                    </View>
                 </View>
                 <Echarts option={option} height={300}/>
+                {/*默认设置不允许渲染，只有点击查询时才允许渲染机制*/}
+                {/*对于在这里设置状态shouldRefresh，会有警告，即使换成调取一个方法设置仍有警告（意义一样）：Cannot update during an existing state transition (such as within 'render')*/}
+                {/*{this.setState({shouldRefresh:false})}*/}
+                {/*于是就设置成这种方式*/}
+                {shouldRefresh = false}
             </View>
         );
     }
@@ -211,12 +215,21 @@ export default class Sale extends React.Component {
                 this.setState({
                     saleHistory: responseData.data
                 });
-                this.state.saleDatas = [this.state.saleHistory.list[0].netSaleMoney,
-                    this.state.saleHistory.list[0].padSaleMoney,
-                    this.state.saleHistory.list[0].saleMoneySum,
-                    this.state.saleHistory.list[0].saleSum,
-                    this.state.saleHistory.list[0].stockSum,
-                    this.state.saleHistory.list[0].weixinSaleMoney]
+                shouldRefresh = true
+                this.setState({
+                    saleDatas: [this.state.saleHistory.list[0].netSaleMoney,
+                        this.state.saleHistory.list[0].padSaleMoney,
+                        this.state.saleHistory.list[0].saleMoneySum,
+                        this.state.saleHistory.list[0].saleSum,
+                        this.state.saleHistory.list[0].stockSum,
+                        this.state.saleHistory.list[0].weixinSaleMoney]
+                });
+                // this.state.saleDatas = [this.state.saleHistory.list[0].netSaleMoney,
+                //     this.state.saleHistory.list[0].padSaleMoney,
+                //     this.state.saleHistory.list[0].saleMoneySum,
+                //     this.state.saleHistory.list[0].saleSum,
+                //     this.state.saleHistory.list[0].stockSum,
+                //     this.state.saleHistory.list[0].weixinSaleMoney]
 
             } else {
 
@@ -227,8 +240,12 @@ export default class Sale extends React.Component {
         })
     }
 
+    shouldComponentUpdate() {
+        return shouldRefresh
+    }
+
 }
 const SaleStyle = StyleSheet.create({})
 
-module.exports = Sale;
+// module.exports = Sale;
 

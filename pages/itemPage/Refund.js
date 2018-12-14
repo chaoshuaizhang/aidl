@@ -9,7 +9,8 @@ import moment from 'moment';
 import Echarts from 'native-echarts';
 import DimensUtil from '../../utils/DimensUtil'
 import Cans from '../../Constants'
-var SALE_DAILY_URL = Cans.SERVER_URL + 'sale/querySalesByDailyNew';
+import {SERVER_URL} from '../../Constants'
+var SALE_DAILY_URL = SERVER_URL + 'sale/querySalesByDailyNew';
 export default class Refund extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
@@ -194,5 +195,5 @@ export default class Refund extends React.Component {
 }
 const RefundStyle = StyleSheet.create({})
 
-module.exports = Refund;
+// module.exports = Refund;
 

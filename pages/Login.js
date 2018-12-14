@@ -5,19 +5,16 @@ import React, {Component} from 'react';
 import {
     View, Text, Image, ImageBackground, StyleSheet,
     TextInput, KeyboardAvoidingView, ScrollView, CheckBox,
-    Button, Platform, TouchableOpacity, ProgressBarAndroid, ToastAndroid
+    Button, Platform, TouchableOpacity, ProgressBarAndroid, ToastAndroid, Modal
 } from 'react-native';
-import HttpUtil from '../utils/HttpUtil'
-import PropTypes from 'prop-types'
+import {StackActions, NavigationActions} from 'react-navigation';
 import TabPage from "./TabPage";
-import {
-    createAppContainer,
-    createStackNavigator,
-    StackActions,
-    NavigationActions,
-} from 'react-navigation';
+import LoginCallBackBtn from './commonComponent/LoginCallBackBtn'
+import MyRB from './commonComponent/SavePwdRb'
+import {SERVER_URL} from '../Constants'
 import Cans from '../Constants'
-var PDAURL = Cans.SERVER_URL + 'user/rnLogin';
+import SplashScreen from 'react-native-splash-screen'
+const PDAURL = SERVER_URL + 'user/rnLogin';
 /*
  * 账号密码输入框
  * */
@@ -55,51 +52,6 @@ class NamePwdView extends Component {
     }
 }
 
-class LoginBtn extends Component {
-    // click() {
-    //     //调用父组件的click
-    //     this.props.click()
-    // }
-
-    render() {
-        return (
-            <View style={{alignItems: 'center', marginTop: 20}}>
-                {/*关于props，在父组件使用时定义了click，则此处点击事件指明用父组件的那个click*/}
-                <TouchableOpacity style={[BgStyle.login_btn]} onPress={() => this.props.click()}>
-                    <Text style={{color: '#4A95F1'}}>登录</Text>
-                </TouchableOpacity>
-            </View>
-        )
-    }
-}
-
-class RedioButton extends Component {
-//https://blog.csdn.net/weixin_40166364/article/details/77948879
-
-    constructor(props) {
-        super(props)
-        this.state = ({
-            isSaved: false,
-            img_arr: [require('../imgs/slices/login/pwd_save.png'), require('../imgs/slices/login/pwd_unsave.png')]
-        })
-    }
-
-    click() {
-        this.props.click()
-    }
-
-    render() {
-        return (
-            <TouchableOpacity onPress={
-                this.click.bind(this)
-            }>
-                <Image style={{width: 12, height: 12}}
-                       source={!this.props.defStatus ? this.state.img_arr[0] : this.state.img_arr[1]}/>
-            </TouchableOpacity>
-        )
-    }
-}
-
 export class Login extends Component {
     static navigationOptions = ({navigation, screenProps}) => ({
         header: null
@@ -119,6 +71,17 @@ export class Login extends Component {
     render() {
         return (
             <ImageBackground style={[BgStyle.bg]}>
+                <Modal
+                    animationType="none"
+                    transparent={true}
+                    visible={this.state.isLogining}
+                    onRequestClose={() => {
+                        //this.setModalVisible(!this.state.isLogining);
+                    }}>
+                    <View style={{flex: 1, justifyContent: 'center'}}>
+                        <ProgressBarAndroid/>
+                    </View>
+                </Modal>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                     <Text style={[BgStyle.versionHelpText]}>Version：P1.0.1</Text>
                     <Text style={[BgStyle.versionHelpText]} onPress={this.helpClick}>帮助</Text>
@@ -134,15 +97,14 @@ export class Login extends Component {
                         <Text style={{color: '#FFFFFF', fontSize: 15, fontWeight: 'bold'}}>SHOPIN</Text>
                     </View>
                 </View>
-                {/*注意理解下下边的绑定和receive_name：相当于是receive_name交给receiveName处理？*/}
+                {/*注意理解下下边的绑定和receive_name：相 当于是receive_name交给receiveName处理？*/}
                 <NamePwdView receive_name={this.receiveName.bind(this)} receive_pwd={this.receivePwd.bind(this)}/>
                 {/*子组件需要用到父组件的props，所以需要传过去？*/}
-                <LoginBtn click={() => this.loginClick()}/>
+                <LoginCallBackBtn click={() => this.loginClick()} title="登陆啦"/>
                 <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'center', marginTop: 15}}>
-                    <RedioButton defStatus={this.state.isSavePwd} click={() => this.savePwd()}/>
+                    <MyRB.MySavePwdRb defStatus={this.state.isSavePwd} click={() => this.savePwd()}/>
                     <Text style={{marginLeft: 10, color: '#FFF'}}>记住密码</Text>
                 </View>
-                {this.renderLoading()}
             </ImageBackground>
         )
     }
@@ -155,15 +117,23 @@ export class Login extends Component {
         // if (this.state.userName == null || this.state.userPwd == null) {
         //     alert("用户密码不能为空！"+PDAURL)
         // }
-
-        this.setState({
-            isLogining: true
-        })
+        //global.showLoading();
+        let resetAction = StackActions.reset({
+            index: 0,
+            actions: [NavigationActions.navigate({routeName: 'TabPage'})],
+        });
+// this.props.navigation.navigate('TabPage')
+        this.props.navigation.dispatch(resetAction)
+        return
+        // this.setState({
+        //     isLogining: true
+        // })
         let formData = new FormData();
-        formData.append("userName", "S021070448");
-        formData.append("password", "0448super");
+        formData.append("userName", "S083779");
+        formData.append("password", "3779super");
         formData.append("macAddress", "11-11-11-11-11-11");
 
+        //Post请求时使用
         let userInfo = {
             "userName": "S083262",
             "password": "3262super",
@@ -210,16 +180,22 @@ export class Login extends Component {
             if (this.state.userInfo.code == 'SUCCESS') {
                 //登录成功
                 Cans.userInfo = this.state.userInfo.data
-                this.props.navigation.navigate('TabPage')
+                let resetAction = StackActions.reset({
+                    index: 0,
+                    actions: [NavigationActions.navigate({routeName: 'TabPage'})],
+                });
+// this.props.navigation.navigate('TabPage')
+                this.props.navigation.dispatch(resetAction)
             } else {
                 alert("FAIL：" + JSON.stringify(this.state.userInfo))
             }
         }).catch((err) => {
             alert("异常：" + err);
         }).finally(() => {
-            this.setState({
-                isLogining: false
-            });
+            global.closeLoading();
+            // this.setState({
+            //     isLogining: false
+            // });
         })
 
         // fetch(PDAURL, {
@@ -273,6 +249,10 @@ export class Login extends Component {
         }
     }
 
+    componentDidMount() {
+        SplashScreen.hide()
+    }
+
 }
 
 const BgStyle = StyleSheet.create({
@@ -322,4 +302,5 @@ const BgStyle = StyleSheet.create({
         alignItems: 'center'
     }
 })
-module.exports = Login;
+// module.exports = Login;
+export default Login

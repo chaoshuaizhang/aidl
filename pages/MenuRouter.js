@@ -1,7 +1,7 @@
 /**
  * Created by changePosition on 2018/11/27.
  */
-import React from 'react';
+import React, {Component} from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 import ItemMenu2 from './itemPage/ItemMenu2'
@@ -32,4 +32,3 @@ export default class MenuRouter extends React.Component {
         return <AppContainer/>;
     }
 }
-module.exports = MenuRouter;

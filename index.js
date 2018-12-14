@@ -9,6 +9,7 @@ import ItemMenu2 from './pages/MenuRouter'
 import MyMenu from './pages/saveTest/MyMenu'
 import TabPage from './pages/TabPage'
 import My from './pages/My'
+import MyIE from './pages/saveTest/TestImportExport'
 import ModalTest from './pages/saveTest/ModalTest'
 import {name as appName} from './app.json';
 

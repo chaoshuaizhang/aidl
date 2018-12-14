@@ -2,7 +2,7 @@
  * Created by changePosition on 2018/11/29.
  */
 import Cans from '../Constants'
-
+import {SERVER_URL} from '../Constants'
 export default {
     fetchGet,
     fetchPost,
@@ -46,7 +46,7 @@ function fetchPut(url, body) {
 
 function fetchUrlPost(url, method, body) {
     return new Promise(function (resolve, reject) {
-        let requestUrl = Cans.SERVER_URL + '/' + url;
+        let requestUrl = SERVER_URL + '/' + url;
         fetch(requestUrl, httpParametersBody(method, body))
             .then((response) => {
                 console.info(method + ' Url：' + requestUrl);
@@ -64,7 +64,7 @@ function fetchUrlPost(url, method, body) {
 function fetchUrlFormData(url, method, formData) {
 
     return new Promise(function (resolve, reject) {
-        fetch(Cans.SERVER_URL + "/" + url, {
+        fetch(SERVER_URL + "/" + url, {
             method: method,
             headers: {},
             body: formData
