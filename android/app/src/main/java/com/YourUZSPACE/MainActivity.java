@@ -1,4 +1,4 @@
-package com.testapp;
+package com.YourUZSPACE;
 
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;  //add
@@ -12,6 +12,6 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         SplashScreen.show(this);   //add
-        return "testApp";
+        return "YourUZSPACE";
     }
 }

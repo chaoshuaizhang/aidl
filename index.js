@@ -14,4 +14,4 @@ import ModalTest from './pages/saveTest/ModalTest'
 import {name as appName} from './app.json';
 
 
-AppRegistry.registerComponent("testApp", () => Application);
+AppRegistry.registerComponent("YourUZSPACE", () => Application);

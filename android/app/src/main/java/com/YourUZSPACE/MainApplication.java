@@ -1,4 +1,4 @@
-package com.testapp;
+package com.YourUZSPACE;
 
 import android.app.Application;
 
