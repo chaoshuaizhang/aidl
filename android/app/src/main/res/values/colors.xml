@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--由于框架内部会使用primary_dark字段作为参数-->
+    <!--此处填入自己需要设置的颜色-->
+    <color name="primary_dark">#656460</color>
+</resources>

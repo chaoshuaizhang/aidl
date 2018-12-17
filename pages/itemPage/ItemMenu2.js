@@ -70,6 +70,7 @@ export default class ItemMenu2 extends React.Component {
                     data={this.state.dataArr}
                     renderItem={this.rengerMenuIcon.bind(this)}
                     horizontal={false}
+                    columnWrapperStyle={{borderWidth: 1, borderColor: '#FF0000', borderRadius: 5}}
                     numColumns={3}
                     style={MenuStyle.list}
                 />
