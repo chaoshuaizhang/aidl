@@ -203,10 +203,13 @@ class MyTable extends React.Component {
                 }
             ],
             headers: ["金额（万）", "预算", "连带率", "同比", "数量"],
-            mainTitle: '合计啦',
+            mainTitle: '合计',
             jine_upsort: false,
             yusuan_upsort: true,
-            titles: null
+            titles: null,
+            poiY: 0.0,
+            leftTouch: false,
+            rightTouch: false
         }
 
     }
@@ -261,7 +264,11 @@ class MyTable extends React.Component {
                         data={this.state.titles}
                         //一定要注意下边的写法，特别是括号
                         renderItem={({item}) => this.renderTitleItem(item)}
-                        onScroll={this.myLeftScroll}
+                        onScroll={this.myLeftScroll.bind(this)}
+                        ref="leftFlatRef"
+                        onTouchStart={() => {
+                            this.setState({leftTouch: true, rightTouch: false})
+                        }}
                     />
                 </View>
                 <ScrollView horizontal>
@@ -279,6 +286,21 @@ class MyTable extends React.Component {
                         <FlatList
                             data={this.state.tables}
                             renderItem={item => this.rengerTableItem(item)}
+                            ref={rightFlatRef => this.rightFlatRef = rightFlatRef}
+                            onScroll={this.myRightScroll.bind(this)}
+                            onTouchStart={() => {
+                                this.setState({leftTouch: false, rightTouch: true})
+                            }}
+                            // 关于设置getItemLayout后，如何使用？
+                            // getItemLayout={(data, index) => {
+                            //     let length = 40;
+                            //     let totalOffset = 0;
+                            //     for (let i = 0; i < index; i++) {
+                            //         totalOffset += 40;
+                            //     }
+                            //     // console.log('当前偏移 =' + totalOffset);
+                            //     return {length: length, offset: totalOffset, index: index};
+                            // }}
                         />
                     </View>
                 </ScrollView>
@@ -332,16 +354,24 @@ class MyTable extends React.Component {
     }
 
     myLeftScroll(event) {
-
+        //重新设置state
+        // this.setState({
+        //     poiY: event.nativeEvent.contentOffset.y
+        // }, () => {
+        //     //写在这里的原因是：修改state后在外边无法立马获取到修改后的值
+        //     //这个animated=true,false没用啊，效果一样
+        //     console.log("--------------------回调滑动后" + this.state.poiY)
+        //     this.rightFlatRef.scrollToOffset({animated: true, offset: this.state.poiY})
+        // })
+        //上述耗时，直接滑动吧
+        if (!this.state.rightTouch)
+            this.rightFlatRef.scrollToOffset({animated: false, offset: event.nativeEvent.contentOffset.y})
     }
 
 
-    myLeftScrollTo(event) {
-        console.log(event.nativeEvent.contentOffset.y)
-    }
-
-    myRightScrollTo(event) {
-        console.log(event.nativeEvent.contentOffset.y)
+    myRightScroll(event) {
+        if (!this.state.leftTouch)
+            this.refs.leftFlatRef.scrollToOffset({animated: false, offset: event.nativeEvent.contentOffset.y})
     }
 
     // titleClick(){

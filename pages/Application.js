@@ -43,9 +43,6 @@ export default class SetUp extends Component {
         global.toast = function (message) {
             self.refs.toast.show(message);
         };
-        // setTimeout(() => {
-        //     SplashScreen.hide()
-        // }, 2000)
     }
 
     render() {
