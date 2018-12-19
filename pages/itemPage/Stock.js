@@ -403,7 +403,7 @@ class MyTable extends React.Component {
     /*<Text>{JSON.stringify(arrItem.item.q)}</Text>*/
 }
 
-export default class DetailsScreen extends React.Component {
+export default class Stock extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
             title: navigation.getParam('otherParam', 'A Nested Details Screen'),

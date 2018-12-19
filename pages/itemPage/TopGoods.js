@@ -1,50 +1,56 @@
 /**
  * Created by changePosition on 2018/11/27.
+ * 日历
  */
 import React from 'react';
-import {Button, View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation'; // Version can be specified in package.json
-export default class DetailsScreen extends React.Component {
+import {View, Text, ViewPagerAndroid} from 'react-native';
+export default class TopGoods extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
             title: navigation.getParam('otherParam', 'A Nested Details Screen'),
         };
     };
 
-    render() {
-        /* 2. Get the param, provide a fallback value if not available */
-        const {navigation} = this.props;
-        const itemId = navigation.getParam('itemId', 'NO-ID');
-        const otherParam = navigation.getParam('otherParam', 'some default value');
+    constructor(props) {
+        super(props)
+        this.state = ({
+            // pageSise: Number.MIN_SAFE_INTEGER
+            pageSise: 10,
+            headers: ["金额（万）", "预算", "连带率", "同比", "数量"]
+        })
+    }
 
+    render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>Details Screen</Text>
-                <Text>itemId: {JSON.stringify(itemId)}</Text>
-                <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-                <Button
-                    title="Go to Details... again"
-                    onPress={() =>
-                        this.props.navigation.push('Details', {
-                            itemId: Math.floor(Math.random() * 100),
-                        })}
-                />
-                <Button
-                    title="Update the title"
-                    onPress={() =>
-                        this.props.navigation.setParams({otherParam: 'Updated!'})}
-                />
-                <Button
-                    title="Go to Home"
-                    onPress={() => this.props.navigation.navigate('Home')}
-                />
-                <Button
-                    title="Go back"
-                    onPress={() => this.props.navigation.goBack()}
-                />
+            <View style={{flex: 1}}>
+                <ViewPagerAndroid
+                    style={{flex: 1}}
+                    initialPage={0}>
+                    {
+                        this.renderPagerItem
+                        // this.state.headers.map((h, i) => (
+                        //     <Text>{h}</Text>
+                        // ))
+                    }
+                </ViewPagerAndroid>
             </View>
         );
     }
+
+    renderPagerItem() {
+        // console.log("开始初始化ViewPager页面")
+        // let arr = []
+        // for (let i = 0, size = this.state.pageSise; i < size; i++) {
+        //     arr.push(
+        //         <Text>第{i}页哈哈哈</Text>
+        //     )
+        //     console.log('第  ' + i + '  页')
+        // }
+        return (
+            this.state.headers.map((h, i) => (
+                <Text>{h}</Text>
+            ))
+        )
+    }
 }
-module.exports = DetailsScreen;
 

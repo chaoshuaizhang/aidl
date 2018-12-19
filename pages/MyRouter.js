@@ -9,9 +9,11 @@ import Login from './Login'
 import Sale from './itemPage/Sale'
 import Refund from './itemPage/Refund';
 import Stock from './itemPage/Stock';
+import TopGoods from './itemPage/TopGoods';
 
 export const MyRouter = createStackNavigator({
 
+    /*这个Login必须和screen：的一样*/
     Login: {
         screen: Login,
     },
@@ -26,6 +28,9 @@ export const MyRouter = createStackNavigator({
     },
     Stock: {
         screen: Stock
+    },
+    TopGoods: {
+        screen: TopGoods
     }
 }, {initialRouteName: 'Login'});
 
