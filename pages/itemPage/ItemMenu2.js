@@ -98,7 +98,7 @@ export default class ItemMenu2 extends React.Component {
         let desc = item.desc;
         this.props.navigation.navigate(desc, {
             itemId: 86,
-            otherParam: item.desc,
+            otherParam: item.desc
         });
     }
 

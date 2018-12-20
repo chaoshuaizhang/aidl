@@ -10,6 +10,7 @@ import Sale from './itemPage/Sale'
 import Refund from './itemPage/Refund';
 import Stock from './itemPage/Stock';
 import TopGoods from './itemPage/TopGoods';
+import DatePicker from './commonComponent/DatePicker';
 
 export const MyRouter = createStackNavigator({
 
@@ -31,6 +32,9 @@ export const MyRouter = createStackNavigator({
     },
     TopGoods: {
         screen: TopGoods
+    },
+    DatePicker: {
+        screen: DatePicker
     }
 }, {initialRouteName: 'Login'});
 

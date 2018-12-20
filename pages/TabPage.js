@@ -6,7 +6,6 @@ import React, {Component} from "react";
 import {StyleSheet, Image} from "react-native";
 import TabNavigator from "react-native-tab-navigator";
 import My from "./My";
-import MenuRouter from "./MenuRouter";
 import ItemMenu2 from "./itemPage/ItemMenu2";
 
 const TAB_TITLE_MY = '我的';

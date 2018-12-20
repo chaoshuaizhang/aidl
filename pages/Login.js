@@ -184,7 +184,7 @@ export class Login extends Component {
                     index: 0,
                     actions: [NavigationActions.navigate({routeName: 'TabPage'})],
                 });
-// this.props.navigation.navigate('TabPage')
+                // this.props.navigation.navigate('TabPage')
                 this.props.navigation.dispatch(resetAction)
             } else {
                 alert("FAIL：" + JSON.stringify(this.state.userInfo))
