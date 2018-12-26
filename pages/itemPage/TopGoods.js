@@ -29,7 +29,9 @@ export default class TopGoods extends React.Component {
     }
 
     popDatePicker() {
-        global.showDatePicker()
+        global.showDatePicker(2008, 12, 5, eventClick => {
+
+        })
         // 不用导航了，导航相当于是跳转到了新的界面，那样的话就不是覆盖效果，而是新页面效果
         // this.props.navigation.push('DatePicker', {
         //     itemId: Math.floor(Math.random() * 100),

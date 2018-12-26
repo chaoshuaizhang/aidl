@@ -42,8 +42,8 @@ export default class SetUp extends Component {
             self.LoadingDialog.close();
         };
 
-        global.showDatePicker = function () {
-            self.DatePicker.show();
+        global.showDatePicker = function (year, month, day) {
+            self.DatePicker.show(year, month, day);
         };
         global.closeDatePicker = function () {
             self.DatePicker.close();
