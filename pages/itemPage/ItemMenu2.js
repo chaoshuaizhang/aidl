@@ -23,35 +23,35 @@ export default class ItemMenu2 extends React.Component {
         this.state = {
             dataArr: [
                 {
-                    img: 'http://e.hiphotos.baidu.com/image/pic/item/574e9258d109b3de887b4161cebf6c81810a4cf6.jpg',
+                    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545900789892&di=7360ad997e829d632e344da30dc7cfb4&imgtype=0&src=http%3A%2F%2Fcdn.clm02.com%2Fezvivi.com%2F290127%2F290127_1.jpg',
                     desc: _SALE
                 },
                 {
-                    img: 'http://f.hiphotos.baidu.com/image/pic/item/eac4b74543a98226ea4cc9088982b9014a90eb14.jpg',
+                    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545900789892&di=7360ad997e829d632e344da30dc7cfb4&imgtype=0&src=http%3A%2F%2Fcdn.clm02.com%2Fezvivi.com%2F290127%2F290127_1.jpg',
                     desc: _REFUND
                 },
                 {
-                    img: 'http://g.hiphotos.baidu.com/image/pic/item/b999a9014c086e063bb3fc6f01087bf40ad1cbff.jpg',
+                    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545900789892&di=7360ad997e829d632e344da30dc7cfb4&imgtype=0&src=http%3A%2F%2Fcdn.clm02.com%2Fezvivi.com%2F290127%2F290127_1.jpg',
                     desc: _TOPGOODS
                 },
                 {
-                    img: 'http://g.hiphotos.baidu.com/image/pic/item/d009b3de9c82d158dad3fcb0820a19d8bc3e4259.jpg',
+                    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545900789892&di=7360ad997e829d632e344da30dc7cfb4&imgtype=0&src=http%3A%2F%2Fcdn.clm02.com%2Fezvivi.com%2F290127%2F290127_1.jpg',
                     desc: _STOCK
                 },
                 {
-                    img: 'http://c.hiphotos.baidu.com/image/pic/item/d31b0ef41bd5ad6e6f3573e883cb39dbb7fd3ce7.jpg',
+                    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545900789892&di=7360ad997e829d632e344da30dc7cfb4&imgtype=0&src=http%3A%2F%2Fcdn.clm02.com%2Fezvivi.com%2F290127%2F290127_1.jpg',
                     desc: _PROMOTION
                 },
                 {
-                    img: 'http://e.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9eea95fc51c178a82b901140c.jpg',
+                    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545900789892&di=7360ad997e829d632e344da30dc7cfb4&imgtype=0&src=http%3A%2F%2Fcdn.clm02.com%2Fezvivi.com%2F290127%2F290127_1.jpg',
                     desc: _CATEGORY
                 },
                 {
-                    img: 'http://b.hiphotos.baidu.com/image/pic/item/8601a18b87d6277fcfa5c43a2a381f30e924fc79.jpg',
+                    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545900789892&di=7360ad997e829d632e344da30dc7cfb4&imgtype=0&src=http%3A%2F%2Fcdn.clm02.com%2Fezvivi.com%2F290127%2F290127_1.jpg',
                     desc: _SUPPLY
                 },
                 {
-                    img: 'http://g.hiphotos.baidu.com/image/pic/item/21a4462309f79052a6158f330ef3d7ca7bcbd5b1.jpg',
+                    img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545900789892&di=7360ad997e829d632e344da30dc7cfb4&imgtype=0&src=http%3A%2F%2Fcdn.clm02.com%2Fezvivi.com%2F290127%2F290127_1.jpg',
                     desc: _BRAND
                 }
             ]
@@ -70,7 +70,7 @@ export default class ItemMenu2 extends React.Component {
                     data={this.state.dataArr}
                     renderItem={this.rengerMenuIcon.bind(this)}
                     horizontal={false}
-                    columnWrapperStyle={{borderWidth: 1, borderColor: '#FF0000', borderRadius: 5}}
+                    // columnWrapperStyle={{borderWidth: 1, borderColor: '#FF0000', borderRadius: 5}}
                     numColumns={3}
                     style={MenuStyle.list}
                 />

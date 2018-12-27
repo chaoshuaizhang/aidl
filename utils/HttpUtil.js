@@ -1,8 +1,7 @@
 /**
  * Created by changePosition on 2018/11/29.
  */
-import Cans from '../Constants'
-import {SERVER_URL} from '../Constants'
+import {SERVER_URL} from "../Constants";
 export default {
     fetchGet,
     fetchPost,

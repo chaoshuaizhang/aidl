@@ -20,9 +20,10 @@ const dateArr = {
     daySelected: false,
     yearRed: false,
     monthRed: false,
-    dayRed: false
-
+    dayRed: false,
+    monthArr: [0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1]
 }
+const datePickerCallBack = {}
 // const dateArr2 = [false, false, false]
 class DatePicker extends React.Component {
     static navigationOptions = ({navigation}) => {
@@ -38,11 +39,9 @@ class DatePicker extends React.Component {
         super(props)
         this.state = ({
             modalVisible: false,
-            years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
+            years: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2028],
             months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-            bigDays: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-            smallDays: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
-            Days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
+            bigDays: [],
             year: null,
             month: null,
             day: null,
@@ -100,8 +99,8 @@ class DatePicker extends React.Component {
                                 activeOpacity={1}
                                 style={{justifyContent: 'center'}}
                                 onPress={() => {
-                                    // if (!this.state.yearSelected)
-                                    //     return
+                                    if (dateArr.yearRed)
+                                        return
                                     dateArr.yearSelected = false
                                     dateArr.yearRed = true
                                     dateArr.monthRed = false
@@ -122,8 +121,8 @@ class DatePicker extends React.Component {
                                 activeOpacity={1}
                                 style={{justifyContent: 'center'}}
                                 onPress={() => {
-                                    // if (!this.state.monthSelected)
-                                    //     return
+                                    if (dateArr.monthRed)
+                                        return
                                     dateArr.yearRed = false
                                     dateArr.monthRed = true
                                     dateArr.dayRed = false
@@ -144,13 +143,15 @@ class DatePicker extends React.Component {
                                 activeOpacity={1}
                                 style={{justifyContent: 'center'}}
                                 onPress={() => {
+                                    if (dateArr.dayRed)
+                                        return
                                     dateArr.daySelected = false
                                     dateArr.yearRed = false
                                     dateArr.monthRed = false
                                     dateArr.dayRed = true
                                     this.setState({
                                         shouldSelect: 'day',
-                                        datas: this.state.bigDays
+                                        datas: this.getDaysByYearAndMonth(this.state.year, this.state.month)
                                     })
                                 }}>
                                 <Text style={{
@@ -164,9 +165,8 @@ class DatePicker extends React.Component {
                                 activeOpacity={1}
                                 style={{justifyContent: 'center'}}
                                 onPress={() => {
-
-                                    console.log(this.state.year + "-" + this.state.month + "-" + this.state.day)
-                                    this.removeAllStatus()
+                                    this.removeAllStatus(this.state.year + "-" + this.state.month + "-" + this.state.day)
+                                    datePickerCallBack.callBack(this.state.year + "-" + this.state.month + "-" + this.state.day)
                                 }}>
                                 <Text style={{
                                     width: 100,
@@ -202,7 +202,8 @@ class DatePicker extends React.Component {
                 <Text style={{
                     color: '#000',
                     fontSize: 15,
-                    textAlign: 'center'
+                    marginLeft: 20,
+                    textAlign: 'left'
                 }}>{item}</Text>
             </TouchableOpacity>
         )
@@ -252,7 +253,7 @@ class DatePicker extends React.Component {
                 dateArr.monthRed = false
                 this.setState({
                     month: item,
-                    datas: this.state.bigDays,
+                    datas: this.getDaysByYearAndMonth(this.state.year, item),
                     shouldSelect: 'day'
                 })
             } else {
@@ -289,7 +290,8 @@ class DatePicker extends React.Component {
      * 根据指定参数获得日期的数据源
      * isExist：是否传过来指定日期
      * */
-    getShowingDatas(year, month, day) {
+    getShowingDatas(s, year, month, day) {
+        console.log(s)
         if (day == null) {
             console.log("day == null")
             if (month == null) {
@@ -312,15 +314,52 @@ class DatePicker extends React.Component {
                 dateArr.yearRed = false
                 dateArr.monthSelected = true
                 dateArr.monthRed = false
+                dateArr.dayRed = true
                 this.setState({shouldSelect: 'day'})
-                return this.state.months
+                return this.getDaysByYearAndMonth(year, month)
             }
         } else {
             dateArr.daySelected = true
             dateArr.dayRed = true
             this.setState({shouldSelect: 'day'})
-            return this.state.bigDays
+            return this.getDaysByYearAndMonth(year, month)
         }
+    }
+
+    getDaysByYearAndMonth(year, month) {
+        var ms = []
+        console.log('-------------------' + year + '-------------------' + month)
+        if (dateArr.monthArr[month] == 1) {//大月
+            if (month == 2) {//2月
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 != 0) {
+                    console.log('闰年闰月')
+                    ms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+                    //闰年
+                    // this.setState({
+                    //     bigDays: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+                    // })
+                } else {
+                    // this.setState({
+                    //     bigDays: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+                    // })
+                    console.log('不是闰月')
+                    ms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+                }
+            } else {
+                // this.setState({
+                //     bigDays: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+                // })
+                console.log('大月大月')
+                ms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+            }
+        } else {//小月
+            // this.setState({
+            //     bigDays: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+            // })
+            console.log('小月小月')
+            ms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+        }
+        return ms
     }
 
     close() {
@@ -331,14 +370,15 @@ class DatePicker extends React.Component {
         }
     }
 
-    show(year, month, day) {
+    show(year, month, day, callBack) {
         console.log(year + "   " + month + "   " + day)
+        datePickerCallBack.callBack = callBack
         this.setState({
             modalVisible: true,
             year: year,
             month: month,
             day: day,
-            datas: this.getShowingDatas(year, month, day)
+            datas: this.getShowingDatas('uuuuuuuuuuuuu', year, month, day)
         });
         // this.setState({
         //     //为什么不能直接使用 datas:this.state.years呢？
@@ -350,6 +390,7 @@ class DatePicker extends React.Component {
 const PickerStyle = StyleSheet.create({
     yearContainer: {
         height: 34,
+        flex: 1,
         justifyContent: 'center'
     }
 })
