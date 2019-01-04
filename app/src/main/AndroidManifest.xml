@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="net.shopin.myaidlserver">
+
+    <permission
+        android:name="net.shopin.myaidlserver.book_service_perr"
+        android:protectionLevel="signature"/>
+    <permission
+        android:name="net.shopin.server.content_provider"
+        android:protectionLevel="signature"/>
+    <permission
+        android:name="net.shopin.myaidlserver.perrrrr"
+        android:protectionLevel="signature"/>
+    <!-- 分======================割=======================线 -->
+    <!-- 上边相当于是自定义了两种权限 -->
+    <!-- 任何想用添加了上述权限的四大组件，都要在manifest中添加uses-per。。。 -->
+    <!-- 下边这个是：说明当前应用也需要使用带有这个权限的组件的 -->
+    <uses-permission android:name="net.shopin.myaidlserver.book_service_perr"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--
+        如果在activity中添加了权限：android:permission="net.shopin.myaidlserver.perrrrr"
+        则，任何想要启动这个activity的组件都需要类似上述一样添加uses-permission（包括系统服务，发现添加了uses后，
+        运行项目不会启动了，因为系统没有这个权限，但是在其他应用中如果声明了权限，则依然可以打开这个activity）
+        -->
+        <!-- 如果想给四大组件添加权限，记住要在上边声明下<permission.../> -->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".BookManageService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="net.shopin.myaidlserver.perrrrr">
+            <intent-filter>
+                <action android:name="net.shopin.aidlservice"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name=".contentprovider.MyContentProvider"
+            android:authorities="net.shopin.contentprovider"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="net.shopin.server.content_provider">
+        </provider>
+
+        <activity android:name=".ContentProviderActivity">
+        </activity>
+
+        <service
+            android:name=".binderpool.BindPoolService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="net.shopin.binder_pool"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
