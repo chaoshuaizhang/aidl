@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    tools:context="net.shopin.testviewevent.MenuActivity">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="弹性滑动"
+        />
+
+    <Button
+        android:id="@+id/_main_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg_shape"
+        android:gravity="center"
+        android:onClick="btnClick"
+        android:text="MainActivity"
+        android:textColor="#FFFFFF"
+        />
+
+    <Button
+        android:id="@+id/_slide_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/btn_bg_shape"
+        android:gravity="center"
+        android:onClick="btnClick"
+        android:text="ViewSlideActivity"
+        android:textColor="#FFFFFF"
+        />
+
+    <Button
+        android:id="@+id/_flex_slide_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/btn_bg_shape"
+        android:gravity="center"
+        android:onClick="btnClick"
+        android:text="FlexSlideActivity"
+        android:textColor="#FFFFFF"
+        />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="事件分发"
+        />
+
+</LinearLayout>
