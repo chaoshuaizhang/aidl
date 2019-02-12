@@ -1,0 +1,190 @@
+--------- beginning of /dev/log/main
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+I/DateView(  932): updateClock textDay:2019-02-11   星期一
+V/WLAN_PSA(  221): NL MSG, len[048], NL type[0x11] WNI type[0x5050] len[028]
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/JPush   ( 4116): [PushService] onDisconnected
+--------- beginning of /dev/log/system
+I/ActivityManager(  879): Start proc com.tencent.android.qqdownloader:connect for service com.tencent.android.qqdownloader/com.qq.AppService.IPCService: pid=6904 uid=10050 gids={50050, 3003, 3002, 1028, 1015, 3001}
+I/WangPosService(28977):  getAppDpiSet:/data/app/com.tencent.android.qqdownloader-2.apk
+I/WangPosService(28977):  getAppDpiSet:/data/app/com.tencent.android.qqdownloader-2.apk
+W/ResourcesManager( 6904): getTopLevelResources: /data/app/com.tencent.android.qqdownloader-2.apk / 1.0
+I/ResourcesManager( 6904): getAppSet  resDir:/data/app/com.tencent.android.qqdownloader-2.apk set:false
+I/ResourcesManager( 6904): getAppSet  resDir:/data/app/com.tencent.android.qqdownloader-2.apk set:false
+I/ResourcesManager( 6904): Created app resources /data/app/com.tencent.android.qqdownloader-2.apk android.content.res.Resources@418abfd8: {1.0 460mcc6mnc zh_CN ldltr sw480dp w480dp h820dp 320dpi lrg long port finger -keyb/v/h -nav/h s.5} appScale=1.0
+D/Tinker.DefaultAppLike( 6904): onBaseContextAttached:
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+W/Tinker.Tinker( 6904): tinker patch directory: /data/data/com.tencent.android.qqdownloader/tinker
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+I/Tinker.Tinker( 6904): try to install tinker, isEnable: true, version: 1.9.1
+I/Tinker.TinkerLoadResult( 6904): parseTinkerResult loadCode:-1, process name:com.tencent.android.qqdownloader:connect, main process:true, systemOTA:false, fingerPrint:QCOM/WPOS-3/WPOS-3:4.4.4/KTU84P/eng.scm.20170707.141825:user/test-keys, oatDir:null, useInterpretMode:false
+W/Tinker.TinkerLoadResult( 6904): tinker is disable, just return
+I/Tinker.DefaultLoadReporter( 6904): patch loadReporter onLoadResult: patch load result, path:/data/data/com.tencent.android.qqdownloader/tinker, code:-1, cost:0
+W/Tinker.Tinker( 6904): tinker load fail!
+I/Tinker.ComponentHotplug( 6904): method install() is not invoked, ignore ensuring operations.
+D/Tinker.DefaultAppLike( 6904): onCreate
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/dalvikvm( 6904): Trying to load lib /data/app-lib/com.tencent.android.qqdownloader-2/libqqndkfile.so 0x418adca0
+D/dalvikvm( 6904): Added shared lib /data/app-lib/com.tencent.android.qqdownloader-2/libqqndkfile.so 0x418adca0
+D/dalvikvm( 6904): No JNI_OnLoad found in /data/app-lib/com.tencent.android.qqdownloader-2/libqqndkfile.so 0x418adca0, skipping init
+E/beacon  ( 6904): isModuleAble:not init ua
+E/beacon  ( 6904): please set the channelID after call initUserAction!
+W/ResourcesManager( 6904): getTopLevelResources: /data/app/com.tencent.android.qqdownloader-2.apk / 1.0
+I/System.out( 6904): [delayTaskRunner] ---> strAPPVersion = 7.2.2_7222130_0002
+I/UserAction_init( 6904): UserAction_init_success
+D/dalvikvm( 6904): Trying to load lib /data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so 0x418adca0
+W/linker  ( 6904): libNativeRQD.so has text relocations. This is wasting memory and is a security risk. Please fix.
+D/dalvikvm( 6904): Added shared lib /data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so 0x418adca0
+D/dalvikvm( 6904): No JNI_OnLoad found in /data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so 0x418adca0, skipping init
+W/dalvikvm( 6904): No implementation found for native Lcom/tencent/feedback/eup/jni/NativeExceptionUpload;.registNativeExceptionHandler2:(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+D/dalvikvm( 6904): GC_CONCURRENT freed 1208K, 27% free 3696K/5024K, paused 3ms+3ms, total 26ms
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler start
+I/native_eup( 6904): found native exception upload!
+I/native_eup( 6904): found native exception handler!
+I/native_eup( 6904): regist handler start procType 1 , level 19 , tombDir:/storage/sdcard0/tencent/tassistant/log/exception
+I/native_eup( 6904): registSignal start
+I/native_eup( 6904): registSignal end
+I/native_eup( 6904): regist handler end
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler end
+I/native_eup( 6904): NativeRQDVersion:NRQD_1.7.4.1
+D/dalvikvm( 6904): Trying to load lib /data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so 0x418adca0
+D/dalvikvm( 6904): Shared lib '/data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so' already loaded in same CL 0x418adca0
+W/dalvikvm( 6904): No implementation found for native Lcom/tencent/feedback/eup/jni/NativeExceptionUpload;.registNativeExceptionHandler2:(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler start
+I/native_eup( 6904): found native exception upload!
+I/native_eup( 6904): found native exception handler!
+I/native_eup( 6904): regist handler start procType 1 , level 19 , tombDir:/storage/sdcard0/tencent/tassistant/log/exception
+I/native_eup( 6904): registSignal start
+I/native_eup( 6904): registSignal end
+I/native_eup( 6904): regist handler end
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler end
+I/native_eup( 6904): NativeRQDVersion:NRQD_1.7.4.1
+D/dalvikvm( 6904): Trying to load lib /data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so 0x418adca0
+D/dalvikvm( 6904): Shared lib '/data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so' already loaded in same CL 0x418adca0
+D/Tinker.DefaultAppLike( 6904): onTrimMemory level:15
+W/dalvikvm( 6904): No implementation found for native Lcom/tencent/feedback/eup/jni/NativeExceptionUpload;.registNativeExceptionHandler2:(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler start
+I/native_eup( 6904): found native exception upload!
+I/native_eup( 6904): found native exception handler!
+I/native_eup( 6904): regist handler start procType 1 , level 19 , tombDir:/storage/sdcard0/tencent/tassistant/log/exception
+I/native_eup( 6904): registSignal start
+I/native_eup( 6904): registSignal end
+I/native_eup( 6904): regist handler end
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler end
+I/native_eup( 6904): NativeRQDVersion:NRQD_1.7.4.1
+D/dalvikvm( 6904): Trying to load lib /data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so 0x418adca0
+D/dalvikvm( 6904): Shared lib '/data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so' already loaded in same CL 0x418adca0
+W/dalvikvm( 6904): No implementation found for native Lcom/tencent/feedback/eup/jni/NativeExceptionUpload;.registNativeExceptionHandler2:(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+D/com.qq.connect( 6904): onBindIntent { cmp=com.tencent.android.qqdownloader/com.qq.AppService.IPCService (has extras) }
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler start
+I/native_eup( 6904): found native exception upload!
+I/native_eup( 6904): found native exception handler!
+I/native_eup( 6904): regist handler start procType 1 , level 19 , tombDir:/storage/sdcard0/tencent/tassistant/log/exception
+I/native_eup( 6904): registSignal start
+I/native_eup( 6904): registSignal end
+I/native_eup( 6904): regist handler end
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler end
+I/native_eup( 6904): NativeRQDVersion:NRQD_1.7.4.1
+D/com.qq.connect( 6904): set callbackcom.connector.qq.AppService.w@41a15548
+D/dalvikvm( 6904): Trying to load lib /data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so 0x418adca0
+D/dalvikvm( 6904): Shared lib '/data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so' already loaded in same CL 0x418adca0
+W/dalvikvm( 6904): No implementation found for native Lcom/tencent/feedback/eup/jni/NativeExceptionUpload;.registNativeExceptionHandler2:(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler start
+I/native_eup( 6904): found native exception upload!
+I/native_eup( 6904): found native exception handler!
+I/native_eup( 6904): regist handler start procType 1 , level 19 , tombDir:/storage/sdcard0/tencent/tassistant/log/exception
+I/native_eup( 6904): registSignal start
+I/native_eup( 6904): registSignal end
+I/native_eup( 6904): regist handler end
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler end
+I/native_eup( 6904): NativeRQDVersion:NRQD_1.7.4.1
+D/com.qq.connect( 6904): isServiceRunning
+D/dalvikvm( 6904): Trying to load lib /data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so 0x418adca0
+D/dalvikvm( 6904): Shared lib '/data/app-lib/com.tencent.android.qqdownloader-2/libNativeRQD.so' already loaded in same CL 0x418adca0
+W/dalvikvm( 6904): No implementation found for native Lcom/tencent/feedback/eup/jni/NativeExceptionUpload;.registNativeExceptionHandler2:(Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler start
+I/native_eup( 6904): found native exception upload!
+I/native_eup( 6904): found native exception handler!
+I/native_eup( 6904): regist handler start procType 1 , level 19 , tombDir:/storage/sdcard0/tencent/tassistant/log/exception
+I/native_eup( 6904): registSignal start
+I/native_eup( 6904): registSignal end
+I/native_eup( 6904): regist handler end
+I/native_eup( 6904): Java_com_tencent_feedback_eup_jni_NativeExceptionUpload_registNativeExceptionHandler end
+I/native_eup( 6904): NativeRQDVersion:NRQD_1.7.4.1
+W/beacon  ( 6904): startQuery: query times or query success times arrive max, return!
+E/beacon  ( 6904): fcntl failed: EAGAIN (Try again)
+V/WLAN_PSA(  221): NL MSG, len[048], NL type[0x11] WNI type[0x5050] len[028]
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+V/WLAN_PSA(  221): NL MSG, len[048], NL type[0x11] WNI type[0x5050] len[028]
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/dalvikvm( 4116): GC_FOR_ALLOC freed 1471K, 32% free 3444K/5040K, paused 35ms, total 46ms
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/JPush   ( 4116): [PushService] onDisconnected
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+V/WLAN_PSA(  221): NL MSG, len[048], NL type[0x11] WNI type[0x5050] len[028]
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+V/WLAN_PSA(  221): NL MSG, len[048], NL type[0x11] WNI type[0x5050] len[028]
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+V/WLAN_PSA(  221): NL MSG, len[048], NL type[0x11] WNI type[0x5050] len[028]
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/net.shopin.testgetui.pushservice.MyGetuiService( 4554): net.shopin.testgetui.pushservice.MyGetuiService call -> onStartCommand -------
+D/GetuiSdkDemo( 4536): call sendFeedbackMessage = success
+D/GetuiSdkDemo( 4536): onReceiveMessageData -> appid = LepJs0LuQD77yXy1iEbHVA
+D/GetuiSdkDemo( 4536): taskid = OSA-0211_8jBHR90nXg8n42RSP2xdv5
+D/GetuiSdkDemo( 4536): messageid = d30ccc37-208d-168d7fc009f-40632002415
+D/GetuiSdkDemo( 4536): pkg = net.shopin.testgetui
+D/GetuiSdkDemo( 4536): cid = 296bfc00ca7a732606316ba1e12fa23f
+D/GetuiSdkDemo( 4536): receiver payload = 透传的内容是什么
+D/GetuiSdkDemo( 4536): sendMessage: 0   透传的内容是什么
+D/GetuiSdkDemo( 4536): ----------------------------------------------------------------------------------------------
+I/ActivityManager( 4554): Timeline: Activity_launch_request id:net.shopin.testgetui time:19427620
+I/ActivityManager(  879): START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=net.shopin.testgetui/.MainActivity} from pid 4554
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/dalvikvm( 1391): GC_CONCURRENT freed 1879K, 31% free 7406K/10704K, paused 9ms+7ms, total 103ms
+V/WLAN_PSA(  221): NL MSG, len[048], NL type[0x11] WNI type[0x5050] len[028]
+D/JPush   ( 4116): [PushService] onDisconnected
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/wpa_supplicant( 1234): RX ctrl_iface - hexdump(len=11): 53 49 47 4e 41 4c 5f 50 4f 4c 4c
+D/wpa_supplicant( 1234): wlan0: Control interface command 'SIGNAL_POLL'
+D/wpa_supplicant( 1234): nl80211: survey data missing!
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
+D/StatusBar.NetworkController(  932): refreshViews connected={ wifi } level=4 combinedSignalIconId=0x7f0200da/com.android.systemui:drawable/stat_sys_wifi_signal_4_fully_nemo mobileLabel=中国联通 wifiLabel="PAD_WIFI"xxxxXXXXxxxxXXXX emergencyOnly=false combinedLabel="PAD_WIFI"xxxxXXXXxxxxXXXX mAirplaneMode=false mDataActivity=0 mPhoneSignalIconId=0x7f0200cc mQSPhoneSignalIconId=0x7f02004c mDataDirectionIconId=0x0 mDataSignalIconId=0x7f0200cc mDataTypeIconId=0x0 mQSDataTypeIconId=0x0 mWifiIconId=0x7f0200da mQSWifiIconId=0x7f02006a mBluetoothTetherIconId=0x10805cc
