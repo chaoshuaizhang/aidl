@@ -70,7 +70,7 @@ public class Event {
                 if (!disallowIntercept) {//允许拦截
                     intercepted = onInterceptTouchEvent(ev);
                     ev.setAction(action); // restore action in case it was changed
-                } else {//不允许
+                } else {//不允许拦截
                     intercepted = false;
                 }
             } else {
@@ -82,7 +82,7 @@ public class Event {
             final boolean split = (mGroupFlags & FLAG_SPLIT_MOTION_EVENTS) != 0;
             TouchTarget newTouchTarget = null;
             boolean alreadyDispatchedToNewTouchTarget = false;
-            if (!canceled && !intercepted) {
+            if (!canceled && !intercepted) {//当ViewGroup没有拦截时（可想而知：它不拦截肯定是交给了子View去处理了）
                 if (actionMasked == MotionEvent.ACTION_DOWN
                         || (split && actionMasked == MotionEvent.ACTION_POINTER_DOWN)
                         || actionMasked == MotionEvent.ACTION_HOVER_MOVE) {
@@ -96,17 +96,14 @@ public class Event {
                         final float y = ev.getY(actionIndex);
                         final ArrayList<View> preorderedList = buildTouchDispatchChildList();
                         final boolean customOrder = preorderedList == null && isChildrenDrawingOrderEnabled();
+                        //获取当前View的子View
                         final View[] children = mChildren;
                         for (int i = childrenCount - 1; i >= 0; i--) {
+                            //根据child的个数和数组下标获取child真正的层级序号
                             final int childIndex = getAndVerifyPreorderedIndex(childrenCount, i, customOrder);
+                            //根据上述的层级序号，一级一级取出子View
                             final View child = getAndVerifyPreorderedView(preorderedList, children, childIndex);
-                            if (childWithAccessibilityFocus != null) {
-                                if (childWithAccessibilityFocus != child) {
-                                    continue;
-                                }
-                                childWithAccessibilityFocus = null;
-                                i = childrenCount - 1;
-                            }
+                            //判断child是否可以接收到point事件 || 子view是否在转换为其坐标空间时包含point
                             if (!canViewReceivePointerEvents(child) || !isTransformedTouchPointInView(x, y, child, null)) {
                                 ev.setTargetAccessibilityFocus(false);
                                 continue;
@@ -207,6 +204,51 @@ public class Event {
         }
         return handled;
     }
+
+
+    /*
+    * 把ViewGroup的dispatchTouchEvent方法分解分析
+    * */
+
+    //在以下两种情况下才会去判断是否需要拦截（是否执行onInterceptTouchEvent方法）
+    if (actionMasked == MotionEvent.ACTION_DOWN || mFirstTouchTarget != null) {
+        final boolean disallowIntercept = (mGroupFlags & FLAG_DISALLOW_INTERCEPT) != 0;
+        if (!disallowIntercept) {//允许拦截
+            intercepted = onInterceptTouchEvent(ev);
+            ev.setAction(action); // restore action in case it was changed
+        } else {//不允许
+            intercepted = false;
+        }
+    } else {
+        //当事件不是ACTION_DOWN || mFirstTouchTarget=null时--->说明ViewGroup已经拦截了，
+        intercepted = true;
+    }
+
+    >mFirstTouchTarget不为空的情况：当ViewGroup的子元素成功处理时，mFirstTouchTarget不为空，
+    即：viewGroup处理时，mFirstTouchTarget为空
+    >>那么可得出结论：只要ViewGroup选择去拦截事件，那么后续的事件都会交给它处理，而不会再执行onInterceptTouchEvent
+
+
+    //在新的ACTION_DOWN事件触发时：
+    if (actionMasked == MotionEvent.ACTION_DOWN) {
+        //清除先前的状态，重置点击状态
+        cancelAndClearTouchTargets(ev);
+        resetTouchState();
+    }
+
+    /**
+     * Resets all touch state in preparation for a new cycle.
+     */
+    private void resetTouchState() {
+        clearTouchTargets();
+        resetCancelNextUpFlag(this);
+        //设置mGroupFlags，设置为ViewGroup可以任
+        //何事件（因为事件分发要重新开始了），此处的位运算不是很懂，
+        //但感觉是把mGroupFlags恢复成最初的值
+        mGroupFlags &= ~FLAG_DISALLOW_INTERCEPT;
+        mNestedScrollAxes = SCROLL_AXIS_NONE;
+    }
+
 
 
 
