@@ -7,11 +7,42 @@
     android:layout_height="match_parent"
     tools:context="net.shopin.eventdispatch.Event_Activity">
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        android:onClick="btnClick"
-        />
+    <!--<Button-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:layout_centerInParent="true"-->
+    <!--android:onClick="btnClick"-->
+    <!--/>-->
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:text="嗝嗝嗝"
+                android:textSize="30sp"
+                />
+
+            <ListView
+                android:id="@+id/lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ListView>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:text="嗝嗝嗝"
+                android:textSize="30sp"
+                />
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </RelativeLayout>
