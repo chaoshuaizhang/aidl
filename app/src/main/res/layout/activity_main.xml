@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="net.shopin.mvvm_learn.MainViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="net.shopin.mvvm_learn.MainActivity">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swiperefresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{mainViewModel.movieVisible}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.v4.widget.ContentLoadingProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:visibility="@{mainViewModel.refresh}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@{mainViewModel.error}"
+            />
+    </RelativeLayout>
+</layout>
