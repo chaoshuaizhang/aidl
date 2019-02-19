@@ -1,5 +1,7 @@
 package net.shopin.mvvm_learn;
 
+import net.shopin.mvvm_learn.dto.DoubanResult;
+
 import io.reactivex.Flowable;
 
 /**

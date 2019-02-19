@@ -1,5 +1,7 @@
 package net.shopin.mvvm_learn;
 
+import net.shopin.mvvm_learn.dto.DoubanResult;
+
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Flowable;

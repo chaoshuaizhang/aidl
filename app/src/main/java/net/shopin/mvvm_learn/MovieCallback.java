@@ -1,5 +1,8 @@
 package net.shopin.mvvm_learn;
 
+import net.shopin.mvvm_learn.dto.DoubanResult;
+import net.shopin.mvvm_learn.dto.MovieDTO;
+
 import java.util.List;
 
 /**
@@ -7,5 +10,5 @@ import java.util.List;
  */
 
 public interface MovieCallback {
-    void getMovies(List<DoubanResult.MovieDTO> subjects);
+    void getMovies(List<MovieDTO> subjects);
 }

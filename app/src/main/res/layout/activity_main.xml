@@ -16,10 +16,18 @@
         android:layout_height="match_parent"
         tools:context="net.shopin.mvvm_learn.MainActivity">
 
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:onClick="btnClick"
+            android:text="点击赋值"/>
+
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swiperefresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="35dp"
             android:visibility="@{mainViewModel.movieVisible}">
 
             <android.support.v7.widget.RecyclerView

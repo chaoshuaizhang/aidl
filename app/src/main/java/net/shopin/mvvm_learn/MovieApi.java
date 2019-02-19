@@ -1,8 +1,6 @@
 package net.shopin.mvvm_learn;
 
-import android.graphics.Movie;
-
-import java.util.List;
+import net.shopin.mvvm_learn.dto.DoubanResult;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;

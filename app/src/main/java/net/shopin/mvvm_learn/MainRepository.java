@@ -2,6 +2,8 @@ package net.shopin.mvvm_learn;
 
 import android.util.Log;
 
+import net.shopin.mvvm_learn.dto.DoubanResult;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.ResourceSubscriber;
