@@ -7,6 +7,7 @@ import android.databinding.ObservableField;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -44,19 +45,23 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.VH> {
     @Override
     public void onBindViewHolder(VH holder, int position) {
         Log.d(TAG, "onBindViewHolder: " + position);
-        //给View里边ItemBinding类设置数据
+        // TODO 2019/2/21 给MovieItemBinding的MovieDTO设置值
         holder.itemBinding.setMovieDto(mainViewModel.movieDTO.get().get(position));
+        holder.itemBinding.setItemCLick(new IOnItemClickListener() {
+            @Override
+            public void onItemClick(View view, MovieDTO movieDTO) {
+                Log.d(TAG, "onItemClick: " + Thread.currentThread().getName() + "  " + movieDTO.getTitle());
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        Log.d(TAG, "getItemCount: "+m.get());
-        Log.d(TAG, "getItemCount: " + mList + "        " + mainViewModel.movieDTO.get());
         return mainViewModel.movieDTO.get().size();
     }
 
     /**
-     * 加载View专用
+     * 加载ImageView图片专用
      *
      * @param imageView
      * @param url
@@ -85,12 +90,17 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.VH> {
 
     class VH extends RecyclerView.ViewHolder {
 
+        // TODO 2019/2/21 MovieItemBinding需要接收一个数据源movieDto
         private MovieItemBinding itemBinding;
 
         public VH(MovieItemBinding itemBinding) {
             super(itemBinding.cardView);
             this.itemBinding = itemBinding;
         }
+    }
+
+    public interface IOnItemClickListener {
+        void onItemClick(View view, MovieDTO movieDTO);
     }
 
 }

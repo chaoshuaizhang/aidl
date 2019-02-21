@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 
+import net.shopin.mvvm_learn.base.BaseViewModel;
 import net.shopin.mvvm_learn.dto.MovieDTO;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * Created by zcs on 2019/2/15.
  */
 
-public class MainViewModel extends BaseObservable {
+public class MainViewModel extends BaseViewModel {
 
     static String TAG = "MainViewModel";
 
