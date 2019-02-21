@@ -1,6 +1,10 @@
 package net.shopin.mvvm_learn;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
 import android.databinding.ObservableField;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 
@@ -12,9 +16,9 @@ import java.util.List;
  * Created by zcs on 2019/2/15.
  */
 
-public class MainViewModel {
+public class MainViewModel extends BaseObservable {
 
-    String TAG = "MainViewModel";
+    static String TAG = "MainViewModel";
 
     //主内容
     public ObservableField<List<MovieDTO>> movieDTO = new ObservableField<>();
@@ -29,7 +33,19 @@ public class MainViewModel {
 
     private MainRepository mainRepository = MainRepository.getInstance(mainModel);
 
+    public boolean swipeRefresh;
+
     public MainViewModel() {
+    }
+
+    @Bindable
+    public boolean isSwipeRefresh() {
+        return swipeRefresh;
+    }
+
+    public void setSwipeRefresh(boolean swipeRefresh) {
+        this.swipeRefresh = swipeRefresh;
+        notifyPropertyChanged(BR.swipeRefresh);
     }
 
     public void getNetMovies(int start, int count) {
@@ -42,10 +58,17 @@ public class MainViewModel {
                 movieDTO.set(subjects);
                 movieVisible.set(View.VISIBLE);
                 refresh.set(View.GONE);
+                Log.d(TAG, "getMovies: 请求结束了");
+                //停止下拉刷新
+                setSwipeRefresh(false);
+                //更新数据源
+                notifyPropertyChanged(BR.mynotify);
             }
         });
     }
 
-
-
+    @Bindable
+    public boolean getMynotify(){
+        return true;
+    }
 }

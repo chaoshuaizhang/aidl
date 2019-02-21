@@ -2,8 +2,13 @@ package net.shopin.mvvm_learn.dto;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import net.shopin.mvvm_learn.BR;
+import net.shopin.mvvm_learn.R;
 
 import java.util.List;
 
@@ -24,6 +29,11 @@ public class MovieDTO extends BaseObservable {
     private List<Cast> directors;
     private Avatars images;
     private Rating rating;
+
+    @Bindable
+    public String getImageUrl() {
+        return getImages().getSmall();
+    }
 
     public Rating getRating() {
         return rating;
@@ -47,6 +57,7 @@ public class MovieDTO extends BaseObservable {
 
     public void setYear(String year) {
         this.year = year;
+        //修改年份后，立即映射到view
         notifyPropertyChanged(BR.year);
     }
 
@@ -62,6 +73,7 @@ public class MovieDTO extends BaseObservable {
 
     public void setTitle(String title) {
         this.title = title;
+        //修改标题后，立即映射到view
         notifyPropertyChanged(BR.title);
     }
 

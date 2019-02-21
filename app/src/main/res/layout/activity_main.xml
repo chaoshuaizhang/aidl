@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -23,21 +24,23 @@
             android:onClick="btnClick"
             android:text="点击赋值"/>
 
-        <android.support.v4.widget.SwipeRefreshLayout
+        <net.shopin.mvvm_learn.MySwipeRefresh
             android:id="@+id/swiperefresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="35dp"
-            android:visibility="@{mainViewModel.movieVisible}">
+            android:visibility="@{mainViewModel.movieVisible}"
+            app:myrefresh="@{mainViewModel.swipeRefresh}">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:mynotify="@{mainViewModel.mynotify}">
 
             </android.support.v7.widget.RecyclerView>
 
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </net.shopin.mvvm_learn.MySwipeRefresh>
 
         <android.support.v4.widget.ContentLoadingProgressBar
             style="?android:attr/progressBarStyleLarge"

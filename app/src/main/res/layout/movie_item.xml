@@ -30,6 +30,7 @@
                 android:layout_width="60dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
+                app:imageUrl="@{movieDto.imageUrl}"
                 android:src="@mipmap/ic_launcher"/>
 
             <LinearLayout
