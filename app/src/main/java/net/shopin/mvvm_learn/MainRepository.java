@@ -7,6 +7,8 @@ import net.shopin.mvvm_learn.base.BaseResourceSubscriber;
 import net.shopin.mvvm_learn.dto.DoubanResult;
 import net.shopin.mvvm_learn.util.RxUtil;
 
+import javax.inject.Inject;
+
 /**
  * Created by zcs on 2019/2/16.
  * 多数据源融合成了一个数据仓库
@@ -18,6 +20,7 @@ public class MainRepository extends BaseRepository {
     //单一数据源
     private MainModel mainModel;
 
+    @Inject
     public MainRepository(MainModel mainModel) {
         this.mainModel = mainModel;
     }

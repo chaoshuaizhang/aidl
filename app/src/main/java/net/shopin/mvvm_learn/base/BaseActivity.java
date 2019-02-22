@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class BaseActivity<VM extends BaseViewModel, VDB extends ViewDataBinding> extends AppCompatActivity {
 
     protected VM mViewModel;
+
     protected VDB mViewDataBinding;
 
 

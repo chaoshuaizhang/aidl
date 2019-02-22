@@ -13,6 +13,8 @@ import net.shopin.mvvm_learn.dto.MovieDTO;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by zcs on 2019/2/15.
  */
@@ -30,12 +32,15 @@ public class MainViewModel extends BaseViewModel {
     //是否显示错误信息
     public ObservableField<String> error = new ObservableField<>();
 
-    private MainModel mainModel = new MainModel();
+    @Inject
+    public MainModel mainModel;
 
-    private MainRepository mainRepository = MainRepository.getInstance(mainModel);
+    @Inject
+    public MainRepository mainRepository;
 
     public boolean swipeRefresh;
 
+    @Inject
     public MainViewModel() {
     }
 

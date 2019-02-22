@@ -5,6 +5,8 @@ import net.shopin.mvvm_learn.dto.DoubanResult;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import io.reactivex.Flowable;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -17,19 +19,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
     private MovieApi movieApi;
-    private Retrofit retrofit;
-    OkHttpClient.Builder builder;
+//    private Retrofit retrofit;
+//    OkHttpClient.Builder builder;
 
-    public RetrofitHelper() {
-        builder = new OkHttpClient.Builder();
-        builder.connectTimeout(10, TimeUnit.SECONDS);
-        retrofit = new Retrofit.Builder()
-                .client(builder.build())
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(MovieApi.BASE_URL)
-                .build();
-        movieApi = retrofit.create(MovieApi.class);
+    @Inject
+    public RetrofitHelper(MovieApi movieApi) {
+//        builder = new OkHttpClient.Builder();
+//        builder.connectTimeout(10, TimeUnit.SECONDS);
+//        retrofit = new Retrofit.Builder()
+//                .client(builder.build())
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//                .baseUrl(MovieApi.BASE_URL)
+//                .build();
+//        movieApi = retrofit.create(MovieApi.class);
+        this.movieApi = movieApi;
     }
 
     public Flowable<DoubanResult> getDoubanMovies(int start, int count) {
