@@ -72,4 +72,8 @@ public class MainViewModel extends BaseViewModel {
     public boolean getMynotify(){
         return true;
     }
+
+    public void destroy(){
+        mainRepository.unSubscribe();
+    }
 }

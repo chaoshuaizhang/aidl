@@ -1,4 +1,4 @@
-package net.shopin.mvvm_learn;
+package net.shopin.mvvm_learn.widget;
 
 import android.content.Context;
 import android.databinding.Bindable;

@@ -1,5 +1,6 @@
 package net.shopin.mvvm_learn;
 
+import net.shopin.mvvm_learn.api.MovieApi;
 import net.shopin.mvvm_learn.dto.DoubanResult;
 
 import java.util.concurrent.TimeUnit;

@@ -1,4 +1,4 @@
-package net.shopin.mvvm_learn;
+package net.shopin.mvvm_learn.api;
 
 import net.shopin.mvvm_learn.dto.DoubanResult;
 

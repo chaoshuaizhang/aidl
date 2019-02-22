@@ -16,7 +16,7 @@ public class MainModel {
         retrofitHelper = new RetrofitHelper();
     }
 
-    public Flowable<DoubanResult> getNetMovie(int start, int count, MovieCallback callback) {
+    public Flowable<DoubanResult> getNetMovie(int start, int count) {
         return retrofitHelper.getDoubanMovies(start, count);
     }
 

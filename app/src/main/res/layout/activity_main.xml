@@ -24,7 +24,7 @@
             android:onClick="btnClick"
             android:text="点击赋值"/>
 
-        <net.shopin.mvvm_learn.MySwipeRefresh
+        <net.shopin.mvvm_learn.widget.MySwipeRefresh
             android:id="@+id/swiperefresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,7 +40,7 @@
 
             </android.support.v7.widget.RecyclerView>
 
-        </net.shopin.mvvm_learn.MySwipeRefresh>
+        </net.shopin.mvvm_learn.widget.MySwipeRefresh>
 
         <android.support.v4.widget.ContentLoadingProgressBar
             style="?android:attr/progressBarStyleLarge"

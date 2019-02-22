@@ -2,17 +2,16 @@ package net.shopin.mvvm_learn;
 
 import android.util.Log;
 
+import net.shopin.mvvm_learn.base.BaseRepository;
+import net.shopin.mvvm_learn.base.BaseResourceSubscriber;
 import net.shopin.mvvm_learn.dto.DoubanResult;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subscribers.ResourceSubscriber;
+import net.shopin.mvvm_learn.util.RxUtil;
 
 /**
  * Created by zcs on 2019/2/16.
  * 多数据源融合成了一个数据仓库
  */
-public class MainRepository {
+public class MainRepository extends BaseRepository {
 
     String TAG = "MainRepository";
     private static MainRepository INSTANCE;
@@ -32,27 +31,15 @@ public class MainRepository {
 
     public void getNetMovie(int start, int count, final MovieCallback callback) {
         Log.d(TAG, "getNetMovie: Repository 开始请求");
-        mainModel.getNetMovie(start, count, callback)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new ResourceSubscriber<DoubanResult>() {
+        addSubscribe(mainModel.getNetMovie(start, count)
+                .compose(RxUtil.<DoubanResult>r())
+                .subscribeWith(new BaseResourceSubscriber<DoubanResult>() {
                     @Override
-                    public void onNext(DoubanResult doubanResult) {
+                    protected void handleData(DoubanResult data) {
                         Log.d(TAG, "onNext: 请求结束");
-                        callback.getMovies(doubanResult.getSubjects());
+                        callback.getMovies(data.getSubjects());
                     }
-
-                    @Override
-                    public void onError(Throwable t) {
-                        Log.d(TAG, "onError: " + t.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        Log.d(TAG, "onComplete: 请求完成");
-                    }
-                })
-        ;
+                }));
     }
 
     public void updateMovie() {

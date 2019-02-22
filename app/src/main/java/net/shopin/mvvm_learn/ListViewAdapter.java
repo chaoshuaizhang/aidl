@@ -13,41 +13,41 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import net.shopin.mvvm_learn.base.BaseAdapter;
+import net.shopin.mvvm_learn.base.BaseViewHolder;
 import net.shopin.mvvm_learn.databinding.MovieItemBinding;
 import net.shopin.mvvm_learn.dto.MovieDTO;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by zcs on 2019/2/17.
  */
-public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.VH> {
+public class ListViewAdapter extends BaseAdapter<MovieItemBinding> {
 
-    String TAG = "ListViewAdapter";
-    private MainViewModel mainViewModel;
-    private List<MovieDTO> mList;
-    ObservableField<List<MovieDTO>> m;
+    private ObservableField<List<MovieDTO>> movieDTOs;
 
-    public ListViewAdapter(MainViewModel viewModel, List<MovieDTO> list, ObservableField<List<MovieDTO>> m) {
-        mainViewModel = viewModel;
-        mList = list;
-        this.m = m;
+    public ListViewAdapter(ObservableField<List<MovieDTO>> m) {
+        movieDTOs = m;
     }
 
     @Override
-    public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.d(TAG, "onCreateViewHolder: " + parent.getContext().hashCode());
-        MovieItemBinding movieItemBinding = DataBindingUtil
-                .inflate(LayoutInflater.from(parent.getContext()), R.layout.movie_item, parent, false);
-        return new VH(movieItemBinding);
+    public BaseViewHolder<MovieItemBinding> onCreateOwnViewHolder(ViewGroup parent, int viewType) {
+        return new BaseViewHolder<MovieItemBinding>(mViewDataBinding, mViewDataBinding.cardView) { };
     }
 
     @Override
-    public void onBindViewHolder(VH holder, int position) {
-        Log.d(TAG, "onBindViewHolder: " + position);
+    public int getlayoutId() {
+        return R.layout.movie_item;
+    }
+
+    @Override
+    public void onBindViewHolder(BaseViewHolder<MovieItemBinding> holder, int position) {
         // TODO 2019/2/21 给MovieItemBinding的MovieDTO设置值
-        holder.itemBinding.setMovieDto(mainViewModel.movieDTO.get().get(position));
-        holder.itemBinding.setItemCLick(new IOnItemClickListener() {
+        holder.mViewDataBinding.setMovieDto(movieDTOs.get().get(position));
+        holder.mViewDataBinding.setItemCLick(new IOnItemClickListener() {
             @Override
             public void onItemClick(View view, MovieDTO movieDTO) {
                 Log.d(TAG, "onItemClick: " + Thread.currentThread().getName() + "  " + movieDTO.getTitle());
@@ -57,7 +57,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.VH> {
 
     @Override
     public int getItemCount() {
-        return mainViewModel.movieDTO.get().size();
+        return movieDTOs.get().size();
     }
 
     /**
@@ -86,17 +86,6 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.VH> {
     public static void loadNotify(RecyclerView recyclerView, boolean notify) {
         Log.d("MainViewModel", "loadNotify: 开始更新了   " + notify);
         recyclerView.getAdapter().notifyDataSetChanged();
-    }
-
-    class VH extends RecyclerView.ViewHolder {
-
-        // TODO 2019/2/21 MovieItemBinding需要接收一个数据源movieDto
-        private MovieItemBinding itemBinding;
-
-        public VH(MovieItemBinding itemBinding) {
-            super(itemBinding.cardView);
-            this.itemBinding = itemBinding;
-        }
     }
 
     public interface IOnItemClickListener {
