@@ -8,17 +8,22 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
+
 import net.shopin.mvvm_learn.base.BaseViewModel;
 import net.shopin.mvvm_learn.dto.MovieDTO;
 
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by zcs on 2019/2/15.
  */
-
 public class MainViewModel extends BaseViewModel {
 
     static String TAG = "MainViewModel";
@@ -42,6 +47,7 @@ public class MainViewModel extends BaseViewModel {
 
     @Inject
     public MainViewModel() {
+        Logger.d("MainViewModel 初始化");
     }
 
     @Bindable

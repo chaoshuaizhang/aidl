@@ -12,6 +12,8 @@ import net.shopin.mvvm_learn.R;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by zcs on 2019/2/19.
  */
@@ -29,6 +31,9 @@ public class MovieDTO extends BaseObservable {
     private List<Cast> directors;
     private Avatars images;
     private Rating rating;
+
+    public MovieDTO() {
+    }
 
     @Bindable
     public String getImageUrl() {

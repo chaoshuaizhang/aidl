@@ -58,8 +58,4 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         return R.layout.activity_main;
     }
 
-    protected ActivityModule getActivityModule() {
-        return new ActivityModule();
-    }
-
 }

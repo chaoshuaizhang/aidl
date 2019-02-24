@@ -1,7 +1,10 @@
 package net.shopin.mvvm_learn.dagger.component;
 
 import net.shopin.mvvm_learn.MainActivity;
+import net.shopin.mvvm_learn.MainViewModel;
 import net.shopin.mvvm_learn.dagger.module.ActivityModule;
+
+import javax.inject.Singleton;
 
 import dagger.Component;
 
@@ -10,7 +13,8 @@ import dagger.Component;
  * 说的是每个
  */
 //dependencies：把AppComponent中提供的一些对象,工具依赖进来，实现共用
-@Component(modules = ActivityModule.class, dependencies = {AppComponent.class})
+
+@Component(modules = {ActivityModule.class}, dependencies = {AppComponent.class})
 public interface ActivityComponent {
 
     void inject(MainActivity activity);
