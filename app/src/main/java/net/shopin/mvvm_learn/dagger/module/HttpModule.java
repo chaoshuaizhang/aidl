@@ -50,10 +50,4 @@ public class HttpModule {
         return retrofit.create(MovieApi.class);
     }
 
-//    @Provides
-//    public ApiManager provideApiManager() {
-//        return new ApiManager();
-//    }
-
-
 }

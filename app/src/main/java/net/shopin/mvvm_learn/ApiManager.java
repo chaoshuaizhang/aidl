@@ -1,11 +1,9 @@
 package net.shopin.mvvm_learn;
 
-import net.shopin.mvvm_learn.api.MovieApi;
 import net.shopin.mvvm_learn.dto.DoubanResult;
 
 import javax.inject.Inject;
 
-import dagger.Module;
 import io.reactivex.Flowable;
 
 /**
@@ -13,14 +11,13 @@ import io.reactivex.Flowable;
  */
 public class ApiManager {
 
-    @Inject
-    public RetrofitHelper retrofitHelper;
+    private RetrofitHelper retrofitHelper;
 
-    @Inject
-    public ApiManager() {
+    public ApiManager(RetrofitHelper retrofitHelper) {
+        this.retrofitHelper = retrofitHelper;
     }
 
-    public  Flowable<DoubanResult> getNetMovie(int start, int count) {
+    public Flowable<DoubanResult> getNetMovie(int start, int count) {
         return retrofitHelper.getDoubanMovies(start, count);
     }
 

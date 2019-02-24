@@ -23,6 +23,7 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
 
     @Override
     protected void init() {
+        //作用：
         DaggerActivityComponent.builder().appComponent(App.getAppComponent()).build().inject(this);
         //View 和 VM建立关联
         mViewDataBinding.setMainViewModel(mainViewModel);
