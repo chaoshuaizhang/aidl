@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import net.shopin.mvvm_learn.base.BaseActivity;
-import net.shopin.mvvm_learn.component.DaggerActivityComponent;
+import net.shopin.mvvm_learn.dagger.component.DaggerActivityComponent;
 import net.shopin.mvvm_learn.databinding.ActivityMainBinding;
-import net.shopin.mvvm_learn.module.ActivityModule;
+import net.shopin.mvvm_learn.dagger.module.ActivityModule;
 
 import java.util.Random;
 
@@ -23,12 +23,12 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
 
     @Override
     protected void init() {
-        DaggerActivityComponent.builder().build().inject(this);
+        DaggerActivityComponent.builder().appComponent(App.getAppComponent()).build().inject(this);
         //View 和 VM建立关联
         mViewDataBinding.setMainViewModel(mainViewModel);
         mViewDataBinding.getMainViewModel().movieVisible.set(View.GONE);
         mViewDataBinding.getMainViewModel().refresh.set(View.VISIBLE);
-        //mViewDataBinding.getMainViewModel().getNetMovies(10, 15);
+        mViewDataBinding.getMainViewModel().getNetMovies(10, 15);
         //ListView适配器
         listViewAdapter = new ListViewAdapter(mViewDataBinding.getMainViewModel().movieDTO);
         mViewDataBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

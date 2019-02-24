@@ -19,20 +19,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
     private MovieApi movieApi;
-//    private Retrofit retrofit;
-//    OkHttpClient.Builder builder;
 
     @Inject
     public RetrofitHelper(MovieApi movieApi) {
-//        builder = new OkHttpClient.Builder();
-//        builder.connectTimeout(10, TimeUnit.SECONDS);
-//        retrofit = new Retrofit.Builder()
-//                .client(builder.build())
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .baseUrl(MovieApi.BASE_URL)
-//                .build();
-//        movieApi = retrofit.create(MovieApi.class);
         this.movieApi = movieApi;
     }
 
