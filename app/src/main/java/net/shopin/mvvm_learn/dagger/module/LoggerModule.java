@@ -1,6 +1,9 @@
 package net.shopin.mvvm_learn.dagger.module;
 
 import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
+import net.shopin.mvvm_learn.App;
 
 import dagger.Module;
 import dagger.Provides;
@@ -10,6 +13,10 @@ import dagger.Provides;
  */
 @Module
 public class LoggerModule {
+
+    public LoggerModule() {
+        Logger.t(App.TAG).i("LoggerModule = 初始化");
+    }
 
     @Provides
     public AndroidLogAdapter provideAndroidLogAdapter() {

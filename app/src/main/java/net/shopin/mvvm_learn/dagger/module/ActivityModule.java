@@ -1,8 +1,12 @@
 package net.shopin.mvvm_learn.dagger.module;
 
+import android.nfc.Tag;
 import android.util.Log;
 
+import com.orhanobut.logger.Logger;
+
 import net.shopin.mvvm_learn.ApiManager;
+import net.shopin.mvvm_learn.App;
 import net.shopin.mvvm_learn.RetrofitHelper;
 import net.shopin.mvvm_learn.api.MovieApi;
 
@@ -17,5 +21,10 @@ import retrofit2.Retrofit;
  */
 @Module
 public class ActivityModule {
+
+
+    public ActivityModule(){
+        Logger.t(App.TAG).i("ActivityModule = 初始化");
+    }
 
 }

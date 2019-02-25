@@ -2,6 +2,8 @@ package net.shopin.mvvm_learn;
 
 import android.util.Log;
 
+import com.orhanobut.logger.Logger;
+
 import net.shopin.mvvm_learn.base.BaseRepository;
 import net.shopin.mvvm_learn.base.BaseResourceSubscriber;
 import net.shopin.mvvm_learn.dto.DoubanResult;
@@ -16,21 +18,23 @@ import javax.inject.Inject;
 public class MainRepository extends BaseRepository {
 
     String TAG = "MainRepository";
-    private static MainRepository INSTANCE;
     //单一数据源
-    private MainModel mainModel;
+    @Inject
+    public MainModel mainModel;
 
     @Inject
-    public MainRepository(MainModel mainModel) {
-        this.mainModel = mainModel;
+    public ApiManager apiManager;
+
+    @Inject
+    public MainRepository() {
     }
 
-    public static MainRepository getInstance(MainModel mainModel) {
-        if (INSTANCE == null) {
-            INSTANCE = new MainRepository(mainModel);
-        }
-        return INSTANCE;
-    }
+//    public static MainRepository getInstance(MainModel mainModel) {
+//        if (INSTANCE == null) {
+//            INSTANCE = new MainRepository(mainModel);
+//        }
+//        return INSTANCE;
+//    }
 
     public void getNetMovie(int start, int count, final MovieCallback callback) {
         Log.d(TAG, "getNetMovie: Repository 开始请求");

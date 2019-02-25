@@ -19,6 +19,7 @@ import javax.inject.Inject;
 public class App extends Application {
 
     private static AppComponent appComponent;
+    public static String TAG = "ApplicationLoggerTest";
 
     @Override
     public void onCreate() {

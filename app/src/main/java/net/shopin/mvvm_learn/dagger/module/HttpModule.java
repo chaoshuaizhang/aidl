@@ -1,6 +1,9 @@
 package net.shopin.mvvm_learn.dagger.module;
 
+import com.orhanobut.logger.Logger;
+
 import net.shopin.mvvm_learn.ApiManager;
+import net.shopin.mvvm_learn.App;
 import net.shopin.mvvm_learn.api.MovieApi;
 
 import dagger.Module;
@@ -18,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpModule {
 
     public HttpModule() {
+        Logger.t(App.TAG).i("HttpModule = 初始化");
     }
 
     @Provides

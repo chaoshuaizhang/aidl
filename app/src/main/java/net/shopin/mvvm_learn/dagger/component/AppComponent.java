@@ -7,11 +7,14 @@ import net.shopin.mvvm_learn.dagger.module.AppModule;
 import net.shopin.mvvm_learn.dagger.module.HttpModule;
 import net.shopin.mvvm_learn.dagger.module.LoggerModule;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
 /**
  * Created by zcs on 2019/2/24.
  */
+@Singleton
 @Component(modules = {HttpModule.class, AppModule.class, LoggerModule.class})
 public interface AppComponent {
 

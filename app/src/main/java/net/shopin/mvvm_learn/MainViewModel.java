@@ -11,6 +11,7 @@ import android.view.View;
 import com.orhanobut.logger.Logger;
 
 import net.shopin.mvvm_learn.base.BaseViewModel;
+import net.shopin.mvvm_learn.dagger.scope.ActivityScope;
 import net.shopin.mvvm_learn.dto.MovieDTO;
 
 import java.util.List;
@@ -24,6 +25,7 @@ import dagger.Provides;
 /**
  * Created by zcs on 2019/2/15.
  */
+@ActivityScope
 public class MainViewModel extends BaseViewModel {
 
     static String TAG = "MainViewModel";
@@ -38,22 +40,13 @@ public class MainViewModel extends BaseViewModel {
     public ObservableField<String> error = new ObservableField<>();
 
     @Inject
-    public MainModel mainModel;
-
-    @Inject
     public MainRepository mainRepository;
 
     public boolean swipeRefresh;
 
     @Inject
     public MainViewModel() {
-        Logger.t(TAG).d("初始化");
-        Logger.t(TAG).d("debug");
-        Logger.t(TAG).e("error");
-        Logger.t(TAG).w("warning");
-        Logger.t(TAG).v("verbose");
-        Logger.t(TAG).i("information");
-        Logger.t(TAG).wtf("What a Terrible Failure");
+        Logger.t(App.TAG).i("MainViewModel = 初始化");
     }
 
     @Bindable
