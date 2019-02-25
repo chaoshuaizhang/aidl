@@ -47,7 +47,13 @@ public class MainViewModel extends BaseViewModel {
 
     @Inject
     public MainViewModel() {
-        Logger.d("MainViewModel 初始化");
+        Logger.t(TAG).d("初始化");
+        Logger.t(TAG).d("debug");
+        Logger.t(TAG).e("error");
+        Logger.t(TAG).w("warning");
+        Logger.t(TAG).v("verbose");
+        Logger.t(TAG).i("information");
+        Logger.t(TAG).wtf("What a Terrible Failure");
     }
 
     @Bindable
@@ -80,11 +86,11 @@ public class MainViewModel extends BaseViewModel {
     }
 
     @Bindable
-    public boolean getMynotify(){
+    public boolean getMynotify() {
         return true;
     }
 
-    public void destroy(){
+    public void destroy() {
         mainRepository.unSubscribe();
     }
 }

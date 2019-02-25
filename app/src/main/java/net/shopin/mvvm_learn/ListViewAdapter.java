@@ -1,12 +1,9 @@
 package net.shopin.mvvm_learn;
 
-import android.content.Context;
 import android.databinding.BindingAdapter;
-import android.databinding.DataBindingUtil;
 import android.databinding.ObservableField;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,8 +16,6 @@ import net.shopin.mvvm_learn.databinding.MovieItemBinding;
 import net.shopin.mvvm_learn.dto.MovieDTO;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 /**
  * Created by zcs on 2019/2/17.

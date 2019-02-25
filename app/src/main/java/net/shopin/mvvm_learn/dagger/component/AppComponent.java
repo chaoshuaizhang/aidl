@@ -1,15 +1,18 @@
 package net.shopin.mvvm_learn.dagger.component;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+
 import net.shopin.mvvm_learn.ApiManager;
 import net.shopin.mvvm_learn.dagger.module.AppModule;
 import net.shopin.mvvm_learn.dagger.module.HttpModule;
+import net.shopin.mvvm_learn.dagger.module.LoggerModule;
 
 import dagger.Component;
 
 /**
  * Created by zcs on 2019/2/24.
  */
-@Component(modules = {HttpModule.class, AppModule.class})
+@Component(modules = {HttpModule.class, AppModule.class, LoggerModule.class})
 public interface AppComponent {
 
     /*
@@ -19,4 +22,6 @@ public interface AppComponent {
     * MovieApi
     * */
     ApiManager getApiManager();
+
+    AndroidLogAdapter getAndroidLogAdapter();
 }
