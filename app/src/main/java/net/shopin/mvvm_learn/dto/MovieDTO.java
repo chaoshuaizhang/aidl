@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 import net.shopin.mvvm_learn.BR;
 import net.shopin.mvvm_learn.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,7 +18,7 @@ import javax.inject.Inject;
 /**
  * Created by zcs on 2019/2/19.
  */
-public class MovieDTO extends BaseObservable {
+public class MovieDTO extends BaseObservable implements Serializable {
     private String id;
     private String alt;
     //对于ObservableField<String> year这种方式是无法解析的，想想也

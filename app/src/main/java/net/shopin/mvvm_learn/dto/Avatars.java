@@ -1,10 +1,12 @@
 package net.shopin.mvvm_learn.dto;
 
+import java.io.Serializable;
+
 /**
  * Created by zcs on 2019/2/19.
  */
 
-public class Avatars {
+public class Avatars implements Serializable {
     private String small;
     private String medium;
     private String large;

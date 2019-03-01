@@ -1,11 +1,12 @@
 package net.shopin.mvvm_learn.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by zcs on 2019/2/16.
  */
-public class DoubanResult {
+public class DoubanResult implements Serializable {
     private List<MovieDTO> subjects;
     private int count;
     private int start;

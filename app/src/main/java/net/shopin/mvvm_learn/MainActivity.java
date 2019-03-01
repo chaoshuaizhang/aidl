@@ -1,21 +1,25 @@
 package net.shopin.mvvm_learn;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import com.orhanobut.logger.Logger;
 
 import net.shopin.mvvm_learn.base.BaseActivity;
 import net.shopin.mvvm_learn.dagger.component.DaggerActivityComponent;
 import net.shopin.mvvm_learn.databinding.ActivityMainBinding;
-import net.shopin.mvvm_learn.dagger.module.ActivityModule;
+import net.shopin.mvvm_learn.dto.MovieDTO;
 
 import java.util.Random;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBinding> implements SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBinding> implements SwipeRefreshLayout.OnRefreshListener, ListViewAdapter.IOnItemClickListener {
 
     private ListViewAdapter listViewAdapter;
     @Inject
@@ -31,7 +35,7 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         mViewDataBinding.getMainViewModel().refresh.set(View.VISIBLE);
         mViewDataBinding.getMainViewModel().getNetMovies(10, 15);
         //ListView适配器
-        listViewAdapter = new ListViewAdapter(mViewDataBinding.getMainViewModel().movieDTO);
+        listViewAdapter = new ListViewAdapter(mViewDataBinding.getMainViewModel().movieDTO, this);
         mViewDataBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mViewDataBinding.recyclerView.setItemAnimator(new DefaultItemAnimator());
         mViewDataBinding.recyclerView.setAdapter(listViewAdapter);
@@ -52,6 +56,12 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         mViewDataBinding.getMainViewModel().getNetMovies(i, i);
     }
 
+    @Override
+    public void onItemClick(View view, MovieDTO movieDTO) {
+        Bundle bun = new Bundle();
+        bun.putSerializable("movieDTO", movieDTO);
+        MovieDetailActivity.start(this, bun);
+    }
 
     @Override
     protected int getLayoutId() {

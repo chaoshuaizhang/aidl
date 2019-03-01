@@ -1,10 +1,12 @@
 package net.shopin.mvvm_learn.dto;
 
+import java.io.Serializable;
+
 /**
  * Created by zcs on 2019/2/19.
  */
 
-public class Cast {
+public class Cast implements Serializable {
     private String id;
     private String name;
     private String alt;

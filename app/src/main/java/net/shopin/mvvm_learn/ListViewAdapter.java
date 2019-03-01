@@ -23,9 +23,11 @@ import java.util.List;
 public class ListViewAdapter extends BaseAdapter<MovieItemBinding> {
 
     private ObservableField<List<MovieDTO>> movieDTOs;
+    private IOnItemClickListener itemClickListener;
 
-    public ListViewAdapter(ObservableField<List<MovieDTO>> m) {
+    public ListViewAdapter(ObservableField<List<MovieDTO>> m,IOnItemClickListener itemClickListener) {
         movieDTOs = m;
+        this.itemClickListener = itemClickListener;
     }
 
     @Override
@@ -42,12 +44,7 @@ public class ListViewAdapter extends BaseAdapter<MovieItemBinding> {
     public void onBindViewHolder(BaseViewHolder<MovieItemBinding> holder, int position) {
         // TODO 2019/2/21 给MovieItemBinding的MovieDTO设置值
         holder.mViewDataBinding.setMovieDto(movieDTOs.get().get(position));
-        holder.mViewDataBinding.setItemCLick(new IOnItemClickListener() {
-            @Override
-            public void onItemClick(View view, MovieDTO movieDTO) {
-                Log.d(TAG, "onItemClick: " + Thread.currentThread().getName() + "  " + movieDTO.getTitle());
-            }
-        });
+        holder.mViewDataBinding.setItemCLick(itemClickListener);
     }
 
     @Override

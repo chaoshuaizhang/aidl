@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.squareup.leakcanary.LeakCanary;
 
 import net.shopin.mvvm_learn.dagger.component.AppComponent;
 import net.shopin.mvvm_learn.dagger.component.DaggerAppComponent;
@@ -24,6 +25,12 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
         Logger.addLogAdapter(App.getAppComponent().getAndroidLogAdapter());
     }
 
