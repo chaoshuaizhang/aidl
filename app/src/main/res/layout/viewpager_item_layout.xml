@@ -1,22 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/img_actor"
-        android:src="@mipmap/ic_launcher"
+    <data class="ViewPagerItemBinding">
+
+        <variable
+            name="movie"
+            type="net.shopin.mvvm_learn.dto.MovieDTO" />
+
+        <variable
+            name="cast"
+            type="net.shopin.mvvm_learn.dto.Cast" />
+
+        <variable
+            name="avatar"
+            type="net.shopin.mvvm_learn.dto.Avatars"/>
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_actor"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="演员名字"
-        android:layout_margin="35dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/img_actor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            app:largeImgUrl="@{cast.avatars.largeImgUrl}"
+            />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_actor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="55dp"
+            android:text="@{cast.name}"
+            android:textSize="25sp" />
+
+    </RelativeLayout>
+</layout>

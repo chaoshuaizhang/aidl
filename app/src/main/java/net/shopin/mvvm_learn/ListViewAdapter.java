@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.orhanobut.logger.Logger;
 
 import net.shopin.mvvm_learn.base.BaseAdapter;
 import net.shopin.mvvm_learn.base.BaseViewHolder;

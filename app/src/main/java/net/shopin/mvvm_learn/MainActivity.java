@@ -4,11 +4,8 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
-import com.orhanobut.logger.Logger;
 
 import net.shopin.mvvm_learn.base.BaseActivity;
 import net.shopin.mvvm_learn.dagger.component.DaggerActivityComponent;
