@@ -5,7 +5,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 /**
- * Created by zcs on 2019/1/24.
+ * Created by zcs on 2019/qqq/24.
  * 关于返回值还有些疑问
  */
 

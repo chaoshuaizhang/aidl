@@ -6,12 +6,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Scroller;
 
 /**
- * Created by zcs on 2019/1/30.
+ * Created by zcs on 2019/qqq/30.
  */
 
 public class MyScrollerView extends View {
@@ -61,7 +60,7 @@ public class MyScrollerView extends View {
     @Override
     public void computeScroll() {
         Log.d(TAG, "computeScroll: X=" + scroller.getCurrX() + "  Y=" + scroller.getCurrY());
-        //computeScrollOffset判断知否需要终止scrollTo的调用（即是否滑动到指定位置了？）
+        //computeScrollOffset判断是否需要终止scrollTo的调用（即是否滑动到指定位置了？）
         //computeScrollOffset会根据设置的时间来分配每一时间段需要滑动的距离
         if (scroller.computeScrollOffset()) {
             //重绘到新的位置

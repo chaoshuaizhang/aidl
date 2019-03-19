@@ -87,7 +87,7 @@
 //                        || (split && actionMasked == MotionEvent.ACTION_POINTER_DOWN)
 //                        || actionMasked == MotionEvent.ACTION_HOVER_MOVE) {
 //                    final int actionIndex = ev.getActionIndex(); // always 0 for down
-//                    final int idBitsToAssign = split ? 1 << ev.getPointerId(actionIndex)
+//                    final int idBitsToAssign = split ? qqq << ev.getPointerId(actionIndex)
 //                            : TouchTarget.ALL_POINTER_IDS;
 //                    removePointersFromTouchTargets(idBitsToAssign);
 //                    final int childrenCount = mChildrenCount;
@@ -98,7 +98,7 @@
 //                        final boolean customOrder = preorderedList == null && isChildrenDrawingOrderEnabled();
 //                        //获取当前View的子View
 //                        final View[] children = mChildren;
-//                        for (int i = childrenCount - 1; i >= 0; i--) {
+//                        for (int i = childrenCount - qqq; i >= 0; i--) {
 //                            //根据child的个数和数组下标获取child真正的层级序号
 //                            final int childIndex = getAndVerifyPreorderedIndex(childrenCount, i, customOrder);
 //                            //根据上述的层级序号，一级一级取出子View
@@ -198,13 +198,13 @@
 //                resetTouchState();
 //            } else if (split && actionMasked == MotionEvent.ACTION_POINTER_UP) {
 //                final int actionIndex = ev.getActionIndex();
-//                final int idBitsToRemove = 1 << ev.getPointerId(actionIndex);
+//                final int idBitsToRemove = qqq << ev.getPointerId(actionIndex);
 //                removePointersFromTouchTargets(idBitsToRemove);
 //            }
 //        }
 //
 //        if (!handled && mInputEventConsistencyVerifier != null) {
-//            mInputEventConsistencyVerifier.onUnhandledEvent(ev, 1);
+//            mInputEventConsistencyVerifier.onUnhandledEvent(ev, qqq);
 //        }
 //        return handled;
 //    }

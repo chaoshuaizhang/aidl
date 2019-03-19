@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="dialog" parent="@android:style/Theme.Holo.Dialog">
+<!--        &lt;!&ndash; 是否有边框 &ndash;&gt;
+        <item name="android:windowFrame">@null</item>
+        &lt;!&ndash;是否在悬浮Activity之上  &ndash;&gt;
+        <item name="android:windowIsFloating">true</item>
+        &lt;!&ndash;标题  &ndash;&gt;
+        <item name="android:windowNoTitle">true</item>
+        &lt;!&ndash;阴影  &ndash;&gt;
+        <item name="android:windowIsTranslucent">false</item>
+        &lt;!&ndash;透明背景&ndash;&gt;
+        <item name="android:background">@android:color/transparent</item>
+        &lt;!&ndash;窗口背景透明&ndash;&gt;
+        <item name="android:windowBackground">@android:color/transparent</item>
+        &lt;!&ndash;弹窗背景是否变暗&ndash;&gt;
+        <item name="android:backgroundDimEnabled">true</item>-->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>

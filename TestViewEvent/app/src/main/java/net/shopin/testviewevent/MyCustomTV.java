@@ -1,6 +1,7 @@
 package net.shopin.testviewevent;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -8,10 +9,10 @@ import android.view.VelocityTracker;
 import android.widget.TextView;
 
 /**
- * Created by zcs on 2019/1/22.
+ * Created by zcs on 2019/qqq/22.
  */
 
-public class MyCustomTV extends TextView {
+public class MyCustomTV extends AppCompatTextView {
     private static final String TAG = "MyCustomTV";
 
     public MyCustomTV(Context context) {
