@@ -20,7 +20,8 @@
                 android:id="@+id/list_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></ListView>
+                android:layout_weight="1"
+                android:paddingLeft="30dp"></ListView>
         </LinearLayout>
 
     </com.example.changeposition.testscrollconflict.MyHornalScrollView>

@@ -12,16 +12,18 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ScrollListActivity extends AppCompatActivity{
+public class ScrollListActivity extends AppCompatActivity {
 
-    private MyListView listView;
+    private ListView listView;
     private LinearLayout layout;
+    private MyHornalScrollView myHornalScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +31,14 @@ public class ScrollListActivity extends AppCompatActivity{
         setContentView(R.layout.activity_scroll_list);
         listView = findViewById(R.id.list_view);
         layout = findViewById(R.id.container);
-        listView.setMyParent(layout);
+        myHornalScrollView = findViewById(R.id.horizontal_scroll_view);
         init();
+        myHornalScrollView.setListview(listView);
     }
 
     void init() {
         LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setId(1008611);
 //        linearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         final List<String> datas = new ArrayList<>();
@@ -90,7 +94,6 @@ public class ScrollListActivity extends AppCompatActivity{
         Intent starter = new Intent(context, ScrollListActivity.class);
         context.startActivity(starter);
     }
-
 
 
 }
