@@ -1,6 +1,7 @@
 //package net.shopin.myaidlclient;
 //
 //import android.os.IBinder;
+//import android.os.RemoteException;
 //
 //import java.util.HashMap;
 //
