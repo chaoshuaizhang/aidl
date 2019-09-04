@@ -37,7 +37,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
+<!--
+            android:process=":zcsremoteservice"-->
         <service
             android:name=".BookManageService"
             android:enabled="true"
@@ -61,16 +62,6 @@
         <activity android:name=".ContentProviderActivity">
         </activity>
 
-        <service
-            android:name=".binderpool.BindPoolService"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="net.shopin.binder_pool"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

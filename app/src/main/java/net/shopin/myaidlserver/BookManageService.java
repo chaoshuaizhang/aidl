@@ -4,7 +4,9 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.IBinder;
+import android.os.IInterface;
 import android.os.Parcel;
+import android.os.Process;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.util.Log;
@@ -14,74 +16,74 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BookManageService extends Service {
-    private static final String TAG = "CLIENT_ERROR_LOG";
+    private static final String TAG = "SERVER_ERROR_LOG";
     private CopyOnWriteArrayList<Book> list = new CopyOnWriteArrayList<>();
-    private List<BookListener> listeners = new ArrayList<>();
-    private RemoteCallbackList<BookListener> cbList = new RemoteCallbackList<>();
-
     /**
-     * 创建这个Binder就是为了暴露给客户端，客户端拿到binder执行add，get方法时，实际走的就是这里。
-     * IBookManager.aidl的这4个方法都执行在binder线程中
+     * 使用：创建这个Binder就是为了暴露给客户端，客户端拿到binder，经过转换变为BookManager实例。
+     * 执行add，get方法时，实际走的就是这里
+     * IBookManager.aidl的这几个方法都执行在binder线程中。
+     * 原理：可以看下IBookManager.Stub()的代码
      */
     private IBinder mBinder = new IBookManager.Stub() {
 
         @Override
-        public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
-            Log.e(TAG, "server   onTransact: ------------------" + code);
-            int check1 = checkCallingOrSelfPermission("net.shopin.myaidlserver.book_service_perr");
-            int check2 = checkCallingOrSelfPermission("net.shopin.myaidlserver.perrrrr");
-            if (check1 == PackageManager.PERMISSION_DENIED && check2 == PackageManager.PERMISSION_DENIED) {
-                Log.e(TAG, "onBind: 第二种方式：没有权限  " + check1 + "   " + check2);
-                return false;
+        public IInterface queryLocalInterface(String descriptor) {
+            //main线程
+            Log.e(TAG, "queryLocalInterface: " + Thread.currentThread().getName());
+            IInterface iInterface = super.queryLocalInterface(descriptor);
+            if (iInterface != null) {
+                if (iInterface instanceof net.shopin.myaidlserver.IBookManager) {
+                    Log.e(TAG, "instanceof");
+                } else {
+                    Log.e(TAG, "!instanceof");
+                }
             } else {
-                Log.e(TAG, "onBind: 第二种方式：有权限");
+                Log.e(TAG, "iInterface == null");
             }
+            return iInterface;
+        }
 
+        /**
+         * 注意这是在匿名内部类中重写的onTransact方法
+         * */
+        @Override
+        public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
+            //binder线程，说明远程调用时执行相应操作的是在binder线程中了
+            Log.e(TAG, "onTransact: " + Thread.currentThread().getName() + "   code= " + code);
+            IBookManager.Stub.asInterface(null);
             return super.onTransact(code, data, reply, flags);
         }
 
         @Override
         public List<Book> getBookList() throws RemoteException {
+            Log.e(TAG, "getBookList: " + Thread.currentThread().getName());
             return list;
         }
 
         @Override
         public void addBook(Book book) throws RemoteException {
-            Log.e(TAG, "addBook: " + Thread.currentThread().getName());
-            list.add(book);
-//            listeners.get(0).hasBook();
-            for (int i = 0, size = cbList.beginBroadcast(); i < size; i++) {
-                cbList.getBroadcastItem(i).hasBook();
+            IInterface iInterface = mBinder.queryLocalInterface("net.shopin.myaidlserver.IBookManager");
+            //事实证明：在server端的service里执行queryLocalInterface是可以获取到对应的IInterface的
+            //当前所在的是Binder进程
+            if (iInterface != null) {
+                if (iInterface instanceof net.shopin.myaidlserver.IBookManager) {
+                    Log.e(TAG, "addBook instanceof");
+                } else {
+                    Log.e(TAG, "addBook !instanceof");
+                }
+            } else {
+                Log.e(TAG, "addBook iInterface == null");
             }
-            cbList.finishBroadcast();
+            //当前是Binder线程
+            Log.e(TAG, "addBook: " + Thread.currentThread().getName());
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            list.add(book);
         }
 
-        @Override
-        public void addListener(BookListener listener) throws RemoteException {
-//            if (listeners.contains(listener)) {
-//                Log.e(TAG, "addListener: 已存在");
-//            } else {
-//                Log.e(TAG, "addListener: 不存在---添加");
-//                listeners.add(listener);
-//            }
-            //添加是在client的主线程中add的，但是这里走到了binder线程
-            Log.e(TAG, "addListener: " + Thread.currentThread().getName());
-            cbList.register(listener);
-        }
-
-        @Override
-        public void removeListener(BookListener listener) throws RemoteException {
-//            if (listeners.contains(listener)) {
-//                Log.e(TAG, "removeListener: 存在---移除");
-//                listeners.remove(listener);
-//            } else {
-//                Log.e(TAG, "removeListener: 不存在---不移除");
-//            }
-            //执行在binder线程
-            cbList.unregister(listener);
-            Log.e(TAG, "removeListener: " + Thread.currentThread().getName());
-            listener.noBook();
-        }
     };
 
     @Override
@@ -89,6 +91,8 @@ public class BookManageService extends Service {
         super.onCreate();
         list.add(new Book(1001, "谁许传"));
         list.add(new Book(1002, "我许传"));
+        //打印出 主线程
+        Log.e(TAG, "onCreate: pid=" + Process.myPid() + "      th=" + Thread.currentThread().getName());
     }
 
     /**
@@ -105,6 +109,8 @@ public class BookManageService extends Service {
 //            Log.e(TAG, "onBind: 没有权限");
 //            return null;
 //        }
+        //main线程
+        Log.e(TAG, "onBind: " + Thread.currentThread().getName());
         return mBinder;
     }
 
